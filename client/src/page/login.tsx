@@ -40,10 +40,15 @@ export default function SignInSide() {
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       console.log(user);
-      const url = "http://localhost:1337/api/auth/local"
-      try {
-        if (user.identifier && user.password) {
-          const {data} = await axios.post(url, user)
+    
+      // Check if the identifier is a valid email format
+      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.identifier);
+    
+      // If the identifier is a valid email, proceed with login
+      if (isValidEmail && user.password) {
+        const url = "http://localhost:1337/api/auth/local"
+        try {
+          const { data } = await axios.post(url, user)
           console.log(data)
           if (data.jwt) {
             storeUser(data)
@@ -53,11 +58,18 @@ export default function SignInSide() {
             setUser(initialUser)
             navigate('/')
           }
-    }}catch(err) {
-      toast.error("Invalid email or password", {
-        hideProgressBar: true
-      })
-    }}
+        } catch (err) {
+          toast.error("Invalid email or password", {
+            hideProgressBar: true
+          })
+        }
+      } else {
+        // Display error message if the identifier is not a valid email
+        toast.error("Please enter a valid email", {
+          hideProgressBar: true
+        })
+      }
+    }
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
