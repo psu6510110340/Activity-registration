@@ -36,12 +36,26 @@ const initialUser = { email: '', password: '', username: '' };
 
 export default function RegisterPage() {
     const [user, setUser] = useState(initialUser)
+    const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
     const MySwal = withReactContent(Swal)
 
     const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(user);
+        
+        if (user.password !== confirmPassword) {
+          toast.error("Passwords do not match", {
+            hideProgressBar: true
+          })
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Passwords do not match!',
+          })
+          return;
+        }
+        
         const url = "http://localhost:1337/api/auth/local/register";
         try {
           if (user.email && user.password && user.username) {
@@ -49,6 +63,7 @@ export default function RegisterPage() {
             console.log(res.data)
             Swal.fire({
               icon: 'success',
+              title: 'success',
               text: 'Register successful'
             })
             navigate('/login', { replace: true })
@@ -61,10 +76,14 @@ export default function RegisterPage() {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = event.target;
-        setUser({
-        ...user,
-          [name]: value,
-        });
+        if (name === 'ConfirmPassword') {
+            setConfirmPassword(value);
+        } else {
+            setUser({
+              ...user,
+              [name]: value,
+            });
+        }
       };
 
   return (
@@ -133,6 +152,17 @@ export default function RegisterPage() {
                     label="Password"
                     type="password"
                     id="password"
+                    autoComplete="current-password"
+                    onChange={handleChange}
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="ConfirmPassword"
+                    label="Confirm Password"
+                    type="password"
+                    id="ConfirmPassword"
                     autoComplete="current-password"
                     onChange={handleChange}
                 />

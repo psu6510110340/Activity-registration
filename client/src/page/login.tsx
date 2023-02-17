@@ -57,6 +57,7 @@ export default function SignInSide() {
           if (data.jwt) {
             Swal.fire({
               icon: 'success',
+              title: 'success',
               text: 'Login successful'
             })
             storeUser(data)
@@ -75,6 +76,7 @@ export default function SignInSide() {
       } else {
         Swal.fire({
           icon: 'error',
+          title: 'Oops...',
           text: 'Login false'
         })
         // Display error message if the identifier is not a valid email
