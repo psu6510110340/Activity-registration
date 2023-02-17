@@ -14,6 +14,9 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 import logo from '../image/logo.png';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -34,6 +37,7 @@ const initialUser = { email: '', password: '', username: '' };
 export default function RegisterPage() {
     const [user, setUser] = useState(initialUser)
     const navigate = useNavigate();
+    const MySwal = withReactContent(Swal)
 
     const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -43,8 +47,12 @@ export default function RegisterPage() {
           if (user.email && user.password && user.username) {
             const res = await axios.post(url, user)
             console.log(res.data)
+            Swal.fire({
+              icon: 'success',
+              text: 'Register successful'
+            })
             navigate('/login', { replace: true })
-        }
+          } 
       }catch(err) {
         toast.error("Invalid email or password", {
           hideProgressBar: true
@@ -136,6 +144,15 @@ export default function RegisterPage() {
                 >
                     สมัครสมาชิก
                 </Button>
+                <Grid container>
+                  <Grid item xs>
+                  </Grid>
+                  <Grid item>
+                    <Link href="login" variant="body2">
+                      {"เข้าสู่ระบบ"}
+                    </Link>
+                  </Grid>
+                </Grid>
               <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
