@@ -64,7 +64,7 @@ export default function SignInSide() {
               hideProgressBar: true
             })
             setUser(initialUser)
-            navigate('/')
+            navigate('/Home')
             
           }
         } catch (err) {
