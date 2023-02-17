@@ -15,6 +15,9 @@ import { useNavigate } from 'react-router-dom';
 import { storeUser } from '../helper';
 import logo from '../image/logo.png';
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 function Copyright(props: any) {
   return (
@@ -36,6 +39,7 @@ const initialUser = { identifier: '', password: ''};
 export default function SignInSide() {
     const [user, setUser] = useState(initialUser)
     const navigate = useNavigate();
+    const MySwal = withReactContent(Swal)
 
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
@@ -51,12 +55,17 @@ export default function SignInSide() {
           const { data } = await axios.post(url, user)
           console.log(data)
           if (data.jwt) {
+            Swal.fire({
+              icon: 'success',
+              text: 'Login successful'
+            })
             storeUser(data)
             toast.success('Login successful', {
               hideProgressBar: true
             })
             setUser(initialUser)
             navigate('/')
+            
           }
         } catch (err) {
           toast.error("Invalid email or password", {
@@ -64,6 +73,10 @@ export default function SignInSide() {
           })
         }
       } else {
+        Swal.fire({
+          icon: 'error',
+          text: 'Login false'
+        })
         // Display error message if the identifier is not a valid email
         toast.error("Please enter a valid email", {
           hideProgressBar: true
