@@ -57,8 +57,8 @@ export default function SignInSide() {
           if (data.jwt) {
             Swal.fire({
               icon: 'success',
-              title: 'success',
-              text: 'Login successful'
+              title: 'ล็อคอินสำเร็จ',
+              text: 'ยินดีต้อนรับสู่ TakeCamp'
             })
             storeUser(data)
             toast.success('Login successful', {
@@ -66,9 +66,13 @@ export default function SignInSide() {
             })
             setUser(initialUser)
             navigate('/Home')
-            
           }
         } catch (err) {
+          Swal.fire({
+            icon: 'error',
+            title: 'ล็อคอินผิดพลาด',
+            text: 'กรุณาตรวจสอบ email หรือ password ของท่าน'
+          })
           toast.error("Invalid email or password", {
             hideProgressBar: true
           })
@@ -76,8 +80,8 @@ export default function SignInSide() {
       } else {
         Swal.fire({
           icon: 'error',
-          title: 'Oops...',
-          text: 'Login false'
+          title: 'ล็อคอินผิดพลาด',
+          text: 'กรุณาตรวจสอบ email หรือ password ของท่าน'
         })
         // Display error message if the identifier is not a valid email
         toast.error("Please enter a valid email", {
@@ -85,7 +89,6 @@ export default function SignInSide() {
         })
       }
     }
-
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
       const { name, value } = event.target;
       setUser({
