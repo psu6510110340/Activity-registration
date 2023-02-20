@@ -43,6 +43,14 @@ export default function RegisterPage() {
     const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(user);
+        if (!user.email || !user.password || !user.username) {
+          Swal.fire({
+            icon: 'error',
+            title: 'ข้อมูลผิดพลาด',
+            text: 'กรุณากรอกข้อมูลให้ครบถ้วน',
+          });
+          return;
+        }
         
         if (user.password !== confirmPassword) {
           toast.error("Passwords do not match", {
@@ -50,8 +58,8 @@ export default function RegisterPage() {
           })
           Swal.fire({
             icon: 'error',
-            title: 'Oops...',
-            text: 'Passwords do not match!',
+            title: 'ข้อมูลผิดพลาด',
+            text: 'รหัสผ่านไม่เหมือนกัน',
           })
           return;
         }
@@ -63,8 +71,8 @@ export default function RegisterPage() {
             console.log(res.data)
             Swal.fire({
               icon: 'success',
-              title: 'success',
-              text: 'Register successful'
+              title: 'สำเร็จ',
+              text: 'การลงทะเบียน'
             })
             navigate('/login', { replace: true })
           } 
