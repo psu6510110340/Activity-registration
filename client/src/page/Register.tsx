@@ -43,7 +43,7 @@ export default function RegisterPage() {
     const handleSignup = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         console.log(user);
-        if (!user.email || !user.password || !user.username) {
+        if (!user.email || !user.password || !user.username || !confirmPassword) {
           Swal.fire({
             icon: 'error',
             title: 'ข้อมูลผิดพลาด',
