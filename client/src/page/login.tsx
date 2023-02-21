@@ -65,7 +65,7 @@ export default function SignInSide() {
               hideProgressBar: true
             })
             setUser(initialUser)
-            navigate('/Home')
+            navigate('/Homeuser')
           }
         } catch (err) {
           Swal.fire({

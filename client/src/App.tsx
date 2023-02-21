@@ -6,7 +6,8 @@ import Main from './page/main'
 import Logout from './page/Logout'
 import Register from './page/Register'
 import Announcement from './page/Announcement'
-
+import HomeAdmin from './page/HomeAdmin'
+import Homeuser from './page/Homeuser'
 function App() {
   return (
     <BrowserRouter>
@@ -18,6 +19,8 @@ function App() {
         <Route path="/main" element={ <Main />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path='/Admin' element={<HomeAdmin/>}/>
+        <Route path='/Homeuser' element={<Homeuser/>}/>
       </Routes>
     </BrowserRouter>
   )
