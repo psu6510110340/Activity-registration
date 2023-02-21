@@ -52,6 +52,15 @@ export default function RegisterPage() {
           });
           return;
         }
+
+        if (!user.email || !/@(email\.psu\.ac\.th|psu\.ac\.th)$/.test(user.email)) {
+          Swal.fire({
+            icon: 'error',
+            title: 'ข้อมูลผิดพลาด',
+            text: 'กรุณากรอกอีเมล์ PSU',
+          });
+          return;
+        }
         
         if (user.password !== confirmPassword) {
           toast.error("Passwords do not match", {
@@ -148,6 +157,8 @@ export default function RegisterPage() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
+                    helperText="Only @email.psu.ac.th or @psu.ac.th"
+                    inputProps={{ pattern: "^[a-zA-Z0-9._%+-]+@(psu\\.ac\\.th|email\\.psu\\.ac\\.th)$" }}
                     onChange={handleChange}
                     autoFocus
                 />
