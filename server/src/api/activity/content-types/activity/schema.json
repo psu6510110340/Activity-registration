@@ -18,6 +18,26 @@
     },
     "description": {
       "type": "text"
+    },
+    "image": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    },
+    "datetime": {
+      "type": "string"
+    },
+    "receive": {
+      "type": "integer"
+    },
+    "apply": {
+      "type": "integer"
     }
   }
 }
