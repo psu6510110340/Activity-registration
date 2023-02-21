@@ -8,6 +8,8 @@ import Register from './page/Register'
 import Announcement from './page/Announcement'
 import HomeAdmin from './page/HomeAdmin'
 import Homeuser from './page/Homeuser'
+import Profile from './page/Profile'
+import Status from './page/status'
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +23,8 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path='/Admin' element={<HomeAdmin/>}/>
         <Route path='/Homeuser' element={<Homeuser/>}/>
+        <Route path="/Status" element={<Status />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   )
