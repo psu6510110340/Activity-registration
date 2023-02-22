@@ -15,6 +15,7 @@ import backgroundImage from '../image/PSU.jpg';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import InputAdornment from '@mui/material/InputAdornment/InputAdornment';
 
 function Copyright(props: any) {
   return (
@@ -101,10 +102,19 @@ export default function RegisterPage() {
             });
         }
       };
-    const emailOptions = [
-        "@psu.ac.th",
-        "@email.psu.ac.th"
-      ];
+    const email = (event: { target: { name: string; value: string; }; }) => {
+        setUser({ ...user, [event.target.name]: event.target.value });      
+        // Automatically append "@psu.ac.th" to email if it doesn't already have it
+        if (
+          event.target.name === "email" &&
+          !event.target.value.endsWith("@psu.ac.th")
+        ) {
+          setUser({
+            ...user,
+            [event.target.name]: `${event.target.value}@psu.ac.th`,
+          });
+        }
+      };
 
   return (
     <ThemeProvider theme={theme}>
@@ -151,26 +161,18 @@ export default function RegisterPage() {
                     onChange={handleChange}
                     autoFocus
                 />
-                <TextField
+                <TextField 
                     margin="normal"
                     required
                     fullWidth
                     id="email"
                     label="Email Address"
                     name="email"
-                    helperText="Only @email.psu.ac.th or @psu.ac.th"
-                    inputProps={{ 
-                      pattern: "^[a-zA-Z0-9._%+-]+@(psu\.ac\.th|email\.psu\.ac\.th)$",
-                      list: "email-options"
-                  }}
-                    onChange={handleChange}
+                    autoComplete="email"
+                    InputProps={{endAdornment: <InputAdornment position="end">@psu.ac.th</InputAdornment>,}}
+                    onChange={email}
                     autoFocus
                 />
-                <datalist id="email-options">
-                  {emailOptions.map(option => (
-                    <option key={option} value={option} />
-                  ))}
-                </datalist>
                 <TextField
                     margin="normal"
                     required
