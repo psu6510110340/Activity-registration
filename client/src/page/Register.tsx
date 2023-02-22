@@ -1,8 +1,6 @@
 import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
@@ -52,6 +50,15 @@ export default function RegisterPage() {
           });
           return;
         }
+
+        if (!user.email || !/@(email\.psu\.ac\.th|psu\.ac\.th)$/.test(user.email)) {
+          Swal.fire({
+            icon: 'error',
+            title: 'ข้อมูลผิดพลาด',
+            text: 'กรุณากรอกอีเมล์ PSU',
+          });
+          return;
+        }
         
         if (user.password !== confirmPassword) {
           toast.error("Passwords do not match", {
@@ -94,6 +101,10 @@ export default function RegisterPage() {
             });
         }
       };
+    const emailOptions = [
+        "@psu.ac.th",
+        "@email.psu.ac.th"
+      ];
 
   return (
     <ThemeProvider theme={theme}>
@@ -147,10 +158,19 @@ export default function RegisterPage() {
                     id="email"
                     label="Email Address"
                     name="email"
-                    autoComplete="email"
+                    helperText="Only @email.psu.ac.th or @psu.ac.th"
+                    inputProps={{ 
+                      pattern: "^[a-zA-Z0-9._%+-]+@(psu\.ac\.th|email\.psu\.ac\.th)$",
+                      list: "email-options"
+                  }}
                     onChange={handleChange}
                     autoFocus
                 />
+                <datalist id="email-options">
+                  {emailOptions.map(option => (
+                    <option key={option} value={option} />
+                  ))}
+                </datalist>
                 <TextField
                     margin="normal"
                     required
