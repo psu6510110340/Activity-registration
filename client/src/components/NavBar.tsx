@@ -18,7 +18,7 @@ const NavBar = () => {
         width: '100%',
         display: 'flex',
         overflow: 'auto',
-        minHeight: '100vh',
+        minHeight: '10vh',
         alignItems: 'center',
         borderColor: 'var(--dl-color-gray-black)',
         borderWidth: '5px',
