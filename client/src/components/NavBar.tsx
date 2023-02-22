@@ -10,8 +10,18 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider ,ThemeOptions } from '@mui/material/styles';
 import logo from '../image/WhiteLogo.png';
 import bell from '../image/WhiteBell.png';
+import ButtonUser from './Body/Buttonuser';
+
+const getUserData = () => {
+  const stringfiedUser = localStorage.getItem('user') || '';
+  if (stringfiedUser) {
+    return JSON.parse(stringfiedUser);
+  }
+  return false;
+};
 
 const NavBar = () => {
+  const userData = getUserData();
   return (
     <div
       style={{
@@ -95,43 +105,7 @@ const NavBar = () => {
         >
           หมวดหมู่
         </span>
-        <button
-          style={{
-            color: 'var(--dl-color-gray-black)', //login
-            width: '170px',
-            height: '50px',
-            position: 'relative',
-            boxShadow: '5px 5px 10px 0px #7c7c7c',
-            textAlign: 'center',
-            textTransform: 'capitalize',
-          }}
-        >
-          <Link href="../login" >
-            <h1
-              style={{
-                top: '6px',
-                left: '0px',
-                color: 'rgb(53, 58, 104)',
-                right: '0px',
-                width: 'auto',
-                bottom: '0px',
-                height: '38px',
-                margin: 'auto',
-                position: 'absolute',
-                textDecoration: 'none',
-              }}
-            >
-              <span
-                style={{
-                  fontWeight: '700',
-                }}
-              >
-                Login
-              </span>
-              <br></br>
-            </h1>
-          </Link>
-        </button>
+        <ButtonUser/>
         <span
           style={{
             color: 'rgb(255, 255, 255)', //ช่องว่าง
@@ -143,6 +117,9 @@ const NavBar = () => {
             fontWeight: '900',
           }}
         ></span>
+        <p>
+          
+        </p>
       </header>  
     </div>
   )
