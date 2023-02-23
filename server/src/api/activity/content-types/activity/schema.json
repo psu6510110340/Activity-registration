@@ -4,8 +4,7 @@
   "info": {
     "singularName": "activity",
     "pluralName": "activities",
-    "displayName": "Activity",
-    "description": ""
+    "displayName": "Activity"
   },
   "options": {
     "draftAndPublish": true
@@ -17,9 +16,9 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "richtext"
     },
-    "image": {
+    "lmage": {
       "allowedTypes": [
         "images",
         "files",
@@ -27,16 +26,21 @@
         "audios"
       ],
       "type": "media",
-      "multiple": false,
-      "required": false
+      "multiple": true
     },
-    "datetime": {
-      "type": "string"
+    "StartActivity": {
+      "type": "date"
     },
-    "receive": {
-      "type": "integer"
+    "EndActivity": {
+      "type": "date"
     },
-    "apply": {
+    "StartRegister": {
+      "type": "date"
+    },
+    "EndRegister": {
+      "type": "date"
+    },
+    "Number": {
       "type": "integer"
     }
   }
