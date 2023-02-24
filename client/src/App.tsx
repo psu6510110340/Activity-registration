@@ -6,9 +6,10 @@ import Main from './page/main'
 import Logout from './page/Logout'
 import Register from './page/Register'
 import Announcement from './page/Announcement'
-import HomeAdmin from './page/HomeAdmin'
+import UseData from './page/UserDataDisplay'
 import Profile from './page/Profile'
 import Status from './page/status'
+
 function App() {
   return (
     <BrowserRouter>
@@ -20,7 +21,7 @@ function App() {
         <Route path="/main" element={ <Main />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path='/Admin' element={<HomeAdmin/>}/>
+        <Route path="/UserDataDisplay" element={<UseData />} />
         <Route path="/Status" element={<Status />} />
         <Route path="/Profile" element={<Profile />} />
       </Routes>
