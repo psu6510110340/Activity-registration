@@ -9,6 +9,7 @@ import Announcement from './page/Announcement'
 import UseData from './page/UserDataDisplay'
 import Profile from './page/Profile'
 import Status from './page/status'
+import ActivityForm from './page/ActivityForm'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/UserDataDisplay" element={<UseData />} />
         <Route path="/Status" element={<Status />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path='/admin' element ={<ActivityForm/>}/>
       </Routes>
     </BrowserRouter>
   )
