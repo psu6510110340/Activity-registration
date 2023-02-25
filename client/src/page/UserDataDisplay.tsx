@@ -35,7 +35,7 @@ function UseData() {
           <Card sx={{ maxWidth: 1000000}}>
             <CardMedia
               sx={{ height: 490, Width:60 }}
-              image = {`http://localhost:1337${data?.image.data.attributes.url}`}
+              image = {'/anm.png'}
               title="green iguana"
             />
             <CardContent>

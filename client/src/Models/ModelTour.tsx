@@ -3,6 +3,7 @@ export default interface MDT {
         attributes: {
             title: String; 
             description: String;
+            detail: string;
             StartActivity: Date;
             EndActivity: Date;
             StartRegister: Date;

@@ -44,7 +44,7 @@ const Detailpage = () => {
             
             <div className="detailcontainer">
                 <div className="first">
-                    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="45%" marginTop="30px" marginBottom = "30px" padding-left = "50px" padding-right = "50px" >
+                    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="45%" marginTop="30px" marginBottom = "30px" padding-left = "50px" padding-right = "50px"  >
                     </Box>
                 </div>
                 <div className="second">
@@ -53,20 +53,29 @@ const Detailpage = () => {
                     </div>
                 
                 <div className="third">
-                <Card variant='outlined' sx = {{backgroundColor: 'white', marginTop: "35px"}}  padding-left = "50px" padding-right = "50px">
+                <Card variant='outlined'
+                // imagecode here
+                sx = {{
+                        backgroundColor: 'white',
+                        marginTop: "35px",
+                        padding: '1rem' 
+                     }}  padding-left = "50px" padding-right = "50px" >
                         <Typography style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
-                            <Box width="80%" height="15vh"sx={{overflow:"auto"}}>
-                                <ReactMarkdown>{data?.description as string}</ReactMarkdown>
+                            <Box width="100%" height="50vh"
+                            sx={{
+                                    overflow:"auto",
+                                    padding: '0.5rem'
+                                }}>
+                                <ReactMarkdown>{data?.detail as string}</ReactMarkdown>
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
                             <CardContent>
                                 <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
-                                    <p>ระยะเวลากิจกรรม </p>
-                                    <p> {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
+                                    <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
                                 </Typography>
                             </CardContent>
                                             <Col>
-                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนคนเข้าร่วม</Typography>
+                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
                             </Col>
                             <Col>
                             </Col>

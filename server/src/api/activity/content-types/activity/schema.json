@@ -44,6 +44,9 @@
     },
     "Number": {
       "type": "integer"
+    },
+    "detail": {
+      "type": "richtext"
     }
   }
 }
