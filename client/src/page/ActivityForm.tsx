@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/NavBar";
 import { Button, TextField } from "@mui/material";
 
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 interface IUser {
   username: string;
   email: string;
@@ -17,6 +20,7 @@ const ActivityForm = (): JSX.Element => {
   const [StartRegister, setStartRegister] = useState<string>("");
   const [EndRegister, setEndRegister] =useState<string>("")
   const [Number, setNumber] = useState<number>(0)
+  const MySwal = withReactContent(Swal);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -61,8 +65,29 @@ const ActivityForm = (): JSX.Element => {
           },
         }),
       });
+  
+      if (response.ok) {
+        // Show success message using SweetAlert2
+        MySwal.fire({
+          title: 'Success!',
+          icon: 'success',
+          text: 'การสร้างกิจกรรมสำเร็จแล้ว',
+        });
+      } else {
+        console.error(`Failed to create activity. Status code: ${response.status}`);
+        MySwal.fire({
+          title: 'Error!',
+          icon: 'error',
+          text: 'สร้างกิจกรรมไม่สำเร็จ เนื่องจากท่านไม่ใช่ Admin',
+        });
+      }
     } catch (error) {
       console.error(error);
+      MySwal.fire({
+        title: 'Error!',
+        icon: 'error',
+        text: 'สร้างไม่สำเร็จเนื่องจากไม่ใช่ admin',
+      });
     }
   };
 
