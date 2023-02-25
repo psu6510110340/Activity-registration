@@ -9,7 +9,7 @@ import Announcement from './page/Announcement'
 import UseData from './page/UserDataDisplay'
 import Profile from './page/Profile'
 import Status from './page/status'
-import ActivityForm from './page/ActivityForm'
+import ActivityForm from './page/Pageadmin/ActivityForm'
 import Detailpage from './page/Detail'
 
 function App() {

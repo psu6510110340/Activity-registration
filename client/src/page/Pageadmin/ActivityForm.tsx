@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/NavBar";
+import Navbar from "../../components/NavBar";
 import { Button, TextField } from "@mui/material";
 
 import Swal from 'sweetalert2'
