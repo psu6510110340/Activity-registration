@@ -2,17 +2,23 @@ import { useState, useEffect } from "react";
 import Navbar from "../components/NavBar";
 import { Button, TextField } from "@mui/material";
 
+interface IUser {
+  username: string;
+  email: string;
+  jwt: string;
+}
+
 const ActivityForm = (): JSX.Element => {
   const [title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [startActivity, setStartActivity] = useState<string>("");
-  const [token, setToken] = useState<string>("");
+  const [user, setUser] = useState<IUser | null>(null);
 
   useEffect(() => {
-    const userData = localStorage.getItem("user") || "";
+    const userData = localStorage.getItem("user");
     if (userData) {
       const parsedUserData = JSON.parse(userData);
-      setToken(parsedUserData.jwt);
+      setUser(parsedUserData);
     }
   }, []);
 
@@ -20,6 +26,11 @@ const ActivityForm = (): JSX.Element => {
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
     event.preventDefault();
+
+    if (!user) {
+      alert("You are not authorized to create an activity.");
+      return;
+    }
 
     // Convert StartActivity to a date
     const startDate = new Date(startActivity);
@@ -29,22 +40,16 @@ const ActivityForm = (): JSX.Element => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${user.jwt}`,
         },
         body: JSON.stringify({
-          title,
-          description,
-          StartActivity: startDate.toDateString().substring(0, 10), // Use the date value in yyyy-mm-dd format
+          data: {
+            title,
+            description,
+            StartActivity: startDate.toISOString().substring(0, 10),
+          },
         }),
       });
-
-      if (!response.ok) {
-        // Handle error response
-        throw new Error(response.statusText);
-      }
-
-      const data = await response.json();
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -82,4 +87,4 @@ const ActivityForm = (): JSX.Element => {
   );
 };
 
-export default ActivityForm;
+export default ActivityForm
