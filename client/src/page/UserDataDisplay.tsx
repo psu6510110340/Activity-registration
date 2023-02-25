@@ -11,8 +11,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 
+
 function UseData() {
   const [MDT, setMDT] = useState<MDT[]>([])
+  const [userresult, setUserResult] = useState<MDT[]>([]);
+  const data = userresult.length > 0 ? userresult[0].attributes : null;
 
   const fetchMDT = async () => {
     const result = await repository.userResult.getAll()
@@ -29,10 +32,10 @@ function UseData() {
     <div>
       {MDT.map((mdt ,index) => (
         <Box key={index} sx={{ border: "1px solid black", p: 2 }}>
-          <Card sx={{ maxWidth: 345 }}>
+          <Card sx={{ maxWidth: 1000000}}>
             <CardMedia
-              sx={{ height: 140 }}
-              image="/anm.png"
+              sx={{ height: 490, Width:60 }}
+              image = {`http://localhost:1337${data?.image.data.attributes.url}`}
               title="green iguana"
             />
             <CardContent>
@@ -47,14 +50,17 @@ function UseData() {
             </CardContent>
             <CardActions>
               <Button size="small">สมัคร</Button>
-              <Button size="small">รายละเอียด {mdt.attributes.Number.toString()}</Button>
+              <Button size="small">รายละเอียด </Button>
+              <Typography variant="body2" color="text.secondary">
+                <p>ผู้สมัคร{mdt.attributes.Number.toString()}</p>
+              </Typography>
             </CardActions>
           </Card>
         </Box>
-      ))}
-      
+        ))}
     </div>
   )
-}
+      }
+  
 
 export default UseData;

@@ -10,16 +10,10 @@ export default interface MDT {
             Number: Number;
             image: {
                 data: {
-                    attributes: {
-                        formats: {
-                            thumbnail: {
-                                url: string;
-
-                            }
+                        attributes: {
+                            url: string;
                         }
-
                     }
                 }
             }
         }
-    }

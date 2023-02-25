@@ -10,6 +10,7 @@ import UseData from './page/UserDataDisplay'
 import Profile from './page/Profile'
 import Status from './page/status'
 import ActivityForm from './page/ActivityForm'
+import Detailpage from './page/Detail'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route index element={<Announcement/>} />
         <Route path="/Home" element={<Home />}/>
+          <Route path="/Detail" element={<Detailpage />} />
         <Route path="/index" element={<Index />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={ <Main />} />
