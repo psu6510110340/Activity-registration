@@ -16,6 +16,7 @@ import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
+import UseData from './UserDataDisplay';
 
 const images = [firstImage, secondImage, thirdImage, fourthImage, fifthImage, sixthImage, seventhImage, eighthImage, ninethImage];
 
@@ -33,47 +34,43 @@ const Home: React.FC = () => {
     setSlideIndex(newValue as number);
   };
 
-      return (
-        <div>
-          <Navbar />
-          <Box sx={{ width: '100%', height: '50%', margin: '0 auto' }}>
-            <CardMedia
-                component = "img"
-                height="550px"
-                image={images[slideIndex]}
-                alt = "image"
-              />
-          </Box>
-          
-          <Box
-            sx={{
-              margin: '2% 10% 2% 10%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              backgroundColor: '#1976D2',
-              padding: '0.7rem',
-              borderRadius: '1rem',
-            }}
-          >
-              <Typography component="h1" variant="h5" sx={{ color: 'white', fontWeight: '900' }}>
-                  ข่าวสาร
-              </Typography>
-          </Box>
+  return (
+    <div>
+      <Navbar />
+      <Box sx={{ width: '100%', height: '55vh', margin: '0 auto', }}>
+        <CardMedia
+          component="img"
+          sx={{ objectFit: 'cover', height: '100%', }}
+          image={images[slideIndex]}
+          alt="image"
+        />
+      </Box>
 
-          <React.Fragment>
-            <CssBaseline />
-            <Container maxWidth="lg" sx={{ margin: '50px'}}>
-              <Box sx={{ flexGrow: 1 }}>
-                <Grid container spacing={2} >
-                    <Grid item xs={4}>
-                      <ActivityHomeCard />
-                    </Grid>
-                </Grid>
-              </Box>
-            </Container>
-          </React.Fragment>
-
+      <Box
+        sx={{
+          margin: '2% 10%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          backgroundColor: '#1976D2',
+          padding: '0.7rem',
+          borderRadius: '1rem',
+        }}
+      >
+        <Typography component="h1" variant="h5" sx={{ color: 'white', fontWeight: '900' }}>
+          ข่าวสาร
+        </Typography>
+      </Box>
+      <React.Fragment>
+        <CssBaseline />
+        <Container maxWidth="lg" sx={{ margin: '2rem 1rem' }}>
+          <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+              <UseData/>
+            </Grid>
+          </Box>
+        </Container>
+      </React.Fragment>
           <FooterBar />
         </div>
       );
