@@ -62,15 +62,16 @@ const Home: React.FC = () => {
         </Typography>
       </Box>
       <React.Fragment>
-        <CssBaseline />
-        <Container maxWidth="lg" sx={{ margin: '2rem 1rem' }}>
-          <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={3}>
-              <UseData/>
-            </Grid>
-          </Box>
-        </Container>
-      </React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="lg" sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: 60 }}>
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={3}>
+            <UseData/>
+          </Grid>
+        </Box>
+      </Container>
+    </React.Fragment>
+
           <FooterBar />
         </div>
       );

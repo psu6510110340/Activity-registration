@@ -19,7 +19,7 @@
     "description": {
       "type": "richtext"
     },
-    "lmage": {
+    "image": {
       "type": "media",
       "multiple": false,
       "required": false,
