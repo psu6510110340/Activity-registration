@@ -36,10 +36,10 @@ const Home: React.FC = () => {
       return (
         <div>
           <Navbar />
-          <Box sx={{ width: '100%', height: '40%', margin: '0 auto' }}>
+          <Box sx={{ width: '100%', height: '50%', margin: '0 auto' }}>
             <CardMedia
                 component = "img"
-                height="400px"
+                height="550px"
                 image={images[slideIndex]}
                 alt = "image"
               />
