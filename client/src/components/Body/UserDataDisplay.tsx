@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { useEffect ,useState } from 'react';
-import MDT from "../Models/ModelTour";
-import repository from "../Repository";
+import MDT from "../../Models/ModelTour";
+import repository from "../../Repository";
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
