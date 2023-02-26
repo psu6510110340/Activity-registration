@@ -36,6 +36,7 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 const initialUser = { identifier: '', password: ''};
+const initialAdmin = { identifier: '', password: ''};
 
 export default function SignInSide() {
     const [user, setUser] = useState(initialUser)
@@ -67,6 +68,7 @@ export default function SignInSide() {
             })
             setUser(initialUser)
             navigate('/Home')
+            
           }
         } catch (err) {
           Swal.fire({

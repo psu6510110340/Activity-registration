@@ -70,6 +70,7 @@ const Detailpage = () => {
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
                             <CardContent>
+                                <Button size="small">สมัคร</Button>
                                 <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
                                     <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
                                 </Typography>
