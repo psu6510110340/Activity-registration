@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../../components/NavBar";
 import { Button, TextField } from "@mui/material";
-
+import Typography from '@mui/material/Typography/Typography';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -99,8 +99,7 @@ const ActivityForm = (): JSX.Element => {
           variant="outlined"
           fullWidth
           value={title}
-          onChange={(event) => setTitle(event.target.value)}
-        />
+          onChange={(event) => setTitle(event.target.value)}/>
         <TextField
           variant="outlined"
           fullWidth

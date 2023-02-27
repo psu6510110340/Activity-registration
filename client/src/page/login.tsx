@@ -15,9 +15,8 @@ import { useNavigate } from 'react-router-dom';
 import { storeUser } from '../helper';
 import logo from '../image/logo.png';
 import backgroundImage from '../image/PSU.jpg';
-
 import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import withReactContent from 'sweetalert2-react-content';
 
 
 function Copyright(props: any) {
@@ -34,9 +33,8 @@ function Copyright(props: any) {
 }
 
 const theme = createTheme();
-
 const initialUser = { identifier: '', password: ''};
-const initialAdmin = { identifier: '', password: ''};
+
 
 export default function SignInSide() {
     const [user, setUser] = useState(initialUser)
@@ -46,12 +44,13 @@ export default function SignInSide() {
     const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
       console.log(user);
-    
+  
       // Check if the identifier is a valid email format
       const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(user.identifier);
+      
     
       // If the identifier is a valid email, proceed with login
-      if (isValidEmail && user.password) {
+      if (isValidEmail && user.password ) {
         const url = "http://localhost:1337/api/auth/local"
         try {
           const { data } = await axios.post(url, user)
@@ -68,7 +67,7 @@ export default function SignInSide() {
             })
             setUser(initialUser)
             navigate('/Home')
-            
+            navigate('/admin')
           }
         } catch (err) {
           Swal.fire({
@@ -184,5 +183,4 @@ export default function SignInSide() {
           </Box>
       </ThemeProvider>
     );
-  }
-  
+    }
