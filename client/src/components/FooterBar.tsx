@@ -43,7 +43,7 @@ function FooterBar() {
             Contact :
           </Typography>
           
-          <Link href='https://th-th.facebook.com/'>
+          <Link href='https://www.facebook.com/profile.php?id=100090454999072'>
             <Box sx={{ margin: '0px 30px 0px 0px' }}>
                 <IconButton sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src={ facebook } //Facebook
@@ -52,7 +52,7 @@ function FooterBar() {
             </Box>
           </Link>
 
-          <Link href='https://access.line.me/oauth2/v2.1/login?returnUri=%2Foauth2%2Fv2.1%2Fauthorize%2Fconsent%3Fscope%3Dopenid%2Bprofile%2Bfriends%2Bgroups%2Btimeline.post%2Bmessage.write%26response_type%3Dcode%26redirect_uri%3Dhttps%253A%252F%252Fsocial-plugins.line.me%252Fwidget%252FloginCallback%253FreturnUrl%253Dhttps%25253A%25252F%25252Fsocial-plugins.line.me%25252Fwidget%25252Fclose%26state%3D9fec98665820574ebc349f47d089a6%26client_id%3D1446101138&loginChannelId=1446101138#/'>
+          <Link href='https://line.me/R/ti/p/@255fcoog'>
             <Box sx={{ margin: '0px 30px 0px 0px' }}>
                 <IconButton sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src={ line } //Line
@@ -61,7 +61,7 @@ function FooterBar() {
             </Box>
           </Link>
 
-          <Link href='https://z-p15.www.instagram.com/accounts/login/?hl=th'>
+          <Link href='https://www.instagram.com/takecamp_officail/?fbclid=IwAR3iIizYcqjRp-YTZe4bTENmkEVFsTPejFHS1sV8ZlBbd6xiYYjnkBmbIpc'>
             <Box sx={{ margin: '0px 0px 0px 0px' }}>
                 <IconButton sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src={ instagram } //Instagram

@@ -16,8 +16,8 @@ export class CampRepository implements IRepository <MDT> {
         const data = await resp.json();
         return data.data;
     }
-    async get(): Promise<MDT[] | null>{
-        const resp = await fetch(`${this.urlPrefix}/MDT/`)
+    async get(id: string): Promise<MDT[] | null>{
+        const resp = await fetch(`${this.urlPrefix}&filters[id][$eq]=${id}`);
         const data = await resp.json();
         return data.data
     }

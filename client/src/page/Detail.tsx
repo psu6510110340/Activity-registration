@@ -22,7 +22,7 @@ const Detailpage = () => {
 
     const fetchData = async () => {
         try {
-            const res = await Repo.userResult.getAll();
+            const res = await Repo.userResult.get(params.id as string);
             if(res) {
                 setUserResult(res)
             }
@@ -36,12 +36,12 @@ const Detailpage = () => {
     }, [params.id])
     
     const data = userresult.length > 0 ? userresult[0].attributes : null;
-    //const image = `http://localhost:1337${data?.image.data.attributes.url}`
+    const image = `http://localhost:1337${data?.image.data.attributes.url}`
 
     return (
         <div>
             <NavBar/>
-            
+            <p>{params.id}</p>
             <div className="detailcontainer">
                 <div className="first">
                     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="45%" marginTop="30px" marginBottom = "30px" padding-left = "50px" padding-right = "50px"  >
@@ -60,7 +60,8 @@ const Detailpage = () => {
                         marginTop: "35px",
                         padding: '1rem' 
                      }}  padding-left = "50px" padding-right = "50px" >
-                        <Typography variant="body2" style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
+                        <FigureImage src={image} width={'60%'} height={'60%'} style={{display: 'block', margin: 'auto'}} />
+                        <Typography style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
                             <Box width="100%" height="50vh"
                             sx={{
                                     overflow:"auto",
