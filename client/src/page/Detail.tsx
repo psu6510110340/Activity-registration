@@ -41,7 +41,6 @@ const Detailpage = () => {
     return (
         <div>
             <NavBar/>
-            <p>{params.id}</p>
             <div className="detailcontainer">
                 <div className="first">
                     <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="45%" marginTop="30px" marginBottom = "30px" padding-left = "50px" padding-right = "50px"  >
@@ -71,14 +70,15 @@ const Detailpage = () => {
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
                             <CardContent>
-                                <Button size="small">สมัคร</Button>
                                 <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
                                     <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
+                                    <p>ระยะเวลาการสมัคร : {data?.StartRegister.toString()} - {data?.EndRegister.toString()}</p>
                                 </Typography>
                             </CardContent>
                                             <Col>
                                 <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
                             </Col>
+                            <Button size="small">สมัคร</Button>
                             <Col>
                             </Col>
                         </Row>
