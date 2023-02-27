@@ -55,10 +55,10 @@ function UseData() {
                     {mdt.attributes.StartRegister.toString()} -{" "}
                     {mdt.attributes.EndRegister.toString()}
                   </p>
-                  <h3>ผู้สมัคร{mdt.attributes.Number.toString()}</h3>
+                  <h3>จำนวนรับ : {mdt.attributes.Number.toString()} คน</h3>
                 </Typography>
                 <CardActions onClick={()=>navigate(`/Detail/${mdt.id}`)}>
-                  <Button variant="outlined" style={{ width: "100%" }}>
+                  <Button variant="outlined" style={{ width: "100%" }} sx={{'&:hover': {background: '#9fb4f2', opacity: [0.1, 0.3, 1]}}}>
                     สมัคร
                   </Button>
                 </CardActions>

@@ -48,7 +48,7 @@ const Home: React.FC = () => {
 
       <Box
         sx={{
-          margin: '2% 10%',
+          margin: '2% 10% 3% 10%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
