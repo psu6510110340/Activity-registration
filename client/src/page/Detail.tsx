@@ -69,14 +69,16 @@ const Detailpage = () => {
                                 <ReactMarkdown>{data?.detail as string}</ReactMarkdown>
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
+                            <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
                             <CardContent>
                                 <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
                                     <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
                                     <p>ระยะเวลาการสมัคร : {data?.StartRegister.toString()} - {data?.EndRegister.toString()}</p>
                                 </Typography>
+                                <Button size="small">สมัคร</Button>
                             </CardContent>
                                             <Col>
-                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
+                                
                             </Col>
                             <Button size="small">สมัคร</Button>
                             <Col>
