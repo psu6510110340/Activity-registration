@@ -13,7 +13,6 @@ import Repo from '../Repository'
 import ReactMarkdown from "react-markdown";
 import CardContent from '@mui/material/CardContent';
 
-
 const Detailpage = () => {
     const [userresult, setUserResult] = useState<MDT[]>([]);
     const [quantity, setQuantity] = useState(1);
@@ -42,26 +41,15 @@ const Detailpage = () => {
         <div>
             <NavBar/>
             <div className="detailcontainer">
-                <div className="first">
-                    <Box display="flex" flexDirection="column" alignItems="center" justifyContent="center" height="45%" marginTop="30px" marginBottom = "30px" padding-left = "50px" padding-right = "50px"  >
-                    </Box>
-                </div>
-                <div className="second">
-                    <Box>
-                    </Box>
-                    </div>
-                
                 <div className="third">
                 <Card variant='outlined'
-                // imagecode here
                 sx = {{
                         backgroundColor: 'white',
-                        marginTop: "35px",
                         padding: '1rem' 
                      }}  padding-left = "50px" padding-right = "50px" >
-                        <FigureImage src={image} width={'60%'} height={'60%'} style={{display: 'block', margin: 'auto'}} />
+                        <FigureImage src={image} width={'60%'} height={'60%'} style={{display: 'block', margin: 'auto',marginBottom:"25px"}} />
                         <Typography style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
-                            <Box width="100%" height="50vh"
+                            <Box width="auto" height="auto"
                             sx={{
                                     overflow:"auto",
                                     padding: '0.5rem'
@@ -69,29 +57,27 @@ const Detailpage = () => {
                                 <ReactMarkdown>{data?.detail as string}</ReactMarkdown>
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
-                            <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
+
                             <CardContent>
-                                <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
+                                <Typography style={{ fontSize: 16, textAlign: "left", color: "black", textAlignLast: "left",marginTop:"-45px",marginBottom:"-15px"}}>
                                     <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
+                                </Typography>
+                                <Typography style={{ fontSize: 16, textAlign: "left", color: "black", textAlignLast: "left",marginBottom:"2px"}}>
                                     <p>ระยะเวลาการสมัคร : {data?.StartRegister.toString()} - {data?.EndRegister.toString()}</p>
                                 </Typography>
-                                <Button size="small">สมัคร</Button>
+                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
+                                <Button size="large" style={{background:"#1976d2", color:"white", width:"9%", fontSize: 20, height:"5vh"}}>สมัคร</Button>
                             </CardContent>
-                                            <Col>
-                                
+                            <Col>
                             </Col>
-                            <Button size="small">สมัคร</Button>
                             <Col>
                             </Col>
                         </Row>
-                        <br/>                       
+                        <br/>
                     </Card>
                 </div>
-            
-            </div>              
+            </div>
         </div>
-        
     )
 }
-
 export default Detailpage
