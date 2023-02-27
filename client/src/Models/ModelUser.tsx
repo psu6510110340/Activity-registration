@@ -1,8 +1,6 @@
-export default interface User {
-    type: string;
-    id: number;
-    username: string;
-    role: {
-      type: string;
-    };
-  }
+export default interface Role {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+}

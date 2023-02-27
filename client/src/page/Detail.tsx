@@ -60,7 +60,7 @@ const Detailpage = () => {
                         marginTop: "35px",
                         padding: '1rem' 
                      }}  padding-left = "50px" padding-right = "50px" >
-                        <Typography style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
+                        <Typography variant="body2" style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
                             <Box width="100%" height="50vh"
                             sx={{
                                     overflow:"auto",
@@ -69,14 +69,17 @@ const Detailpage = () => {
                                 <ReactMarkdown>{data?.detail as string}</ReactMarkdown>
                             </Box>
                         <Row xs="auto" style={{marginLeft: '8px'}} className="justify-content-md-center">
+                            <Col>
+                            <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"20px",marginBottom:"-25px"}}>
+                                จำนวนที่รับสมัคร {data?.Number.toString()}
+                            </Typography>
                             <CardContent>
-                                <Button size="small">สมัคร</Button>
-                                <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left"}}>
+                                
+                                <Typography style={{ fontSize: 17, textAlign: "left", color: "black", textAlignLast: "left",marginTop:"0.1px"}}>
                                     <p>ระยะเวลากิจกรรม : {data?.StartActivity.toString()} - {data?.EndActivity.toString()}</p>
                                 </Typography>
+                                <Button size="large" style={{background:"#1976d2", color:"white", width:"9%", fontSize: 20, height:"5vh"}}>สมัคร</Button>
                             </CardContent>
-                                            <Col>
-                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"10px"}}>จำนวนที่รับสมัคร {data?.Number.toString()}</Typography>
                             </Col>
                             <Col>
                             </Col>
