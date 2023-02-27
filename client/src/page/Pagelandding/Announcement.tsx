@@ -8,9 +8,9 @@ const Main: React.FC = () => {
         <div className="overlay"></div>
         <video src={videoBg} autoPlay loop muted />
         <div className="content">
-            <h1>Welcome</h1>
-            <p>To my site.</p>
-            <a className='button' href='http://localhost:3000/Home'>เข้าสู่เว็บไซต์</a>
+            <h1>TAKE CAMP🌍</h1>
+            
+            <a className= "myButton" href='http://localhost:3000/Home'>COMMING TO TAKECAMP</a>
         </div>
     </div>
   );
