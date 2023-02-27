@@ -1,6 +1,6 @@
-import Navbar from '../components/Body/StatusNavbar';
+import Navbar from '../../components/Body/StatusNavbar';
 import React from 'react';
-import CardLog from '../components/Body/Popupcard';
+import CardLog from '../../components/Body/Popupcard';
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem('user') || '';

@@ -1,22 +1,22 @@
 import React, { useState, useEffect, useRef } from 'react';
-import Navbar from '../components/NavBar';
-import FooterBar from '../components/FooterBar';
+import Navbar from '../../components/NavBar';
+import FooterBar from '../../components/FooterBar';
 import { Box, CardMedia, Slider, styled, Typography } from '@mui/material';
-import firstImage from '../image/ArtActivity.png';
-import secondImage from '../image/Asean.png';
-import thirdImage from '../image/CoachDigital.png';
-import fourthImage from '../image/Council.png';
-import fifthImage from '../image/Falling.png';
-import sixthImage from '../image/Kahoot.png';
-import seventhImage from '../image/Malaysia.png';
-import eighthImage from '../image/PSUHealth.png';
-import ninethImage from '../image/TPM.png';
-import ActivityHomeCard from '../components/ActivityHomeCard';
+import firstImage from '../../image/ArtActivity.png';
+import secondImage from '../../image/Asean.png';
+import thirdImage from '../../image/CoachDigital.png';
+import fourthImage from '../../image/Council.png';
+import fifthImage from '../../image/Falling.png';
+import sixthImage from '../../image/Kahoot.png';
+import seventhImage from '../../image/Malaysia.png';
+import eighthImage from '../../image/PSUHealth.png';
+import ninethImage from '../../image/TPM.png';
+import ActivityHomeCard from '../../components/ActivityHomeCard';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import UseData from '../components/Body/UserDataDisplay';
+import UseData from '../../components/Body/UserDataDisplay';
 
 const images = [firstImage, secondImage, thirdImage, fourthImage, fifthImage, sixthImage, seventhImage, eighthImage, ninethImage];
 

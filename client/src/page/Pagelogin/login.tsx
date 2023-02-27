@@ -12,9 +12,9 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
-import { storeUser } from '../helper';
-import logo from '../image/logo.png';
-import backgroundImage from '../image/PSU.jpg';
+import { storeUser } from '../../helper';
+import logo from '../../image/logo.png';
+import backgroundImage from '../../image/PSU.jpg';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
 
@@ -67,7 +67,6 @@ export default function SignInSide() {
             })
             setUser(initialUser)
             navigate('/Home')
-            navigate('/admin')
           }
         } catch (err) {
           Swal.fire({

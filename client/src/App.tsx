@@ -1,16 +1,16 @@
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
-import Home from './page/Home'
+import Home from './page/Pagehome/Home'
 import Index from './page/index'
-import Login from './page/login'
+import Login from './page/Pagelogin/login'
 import Main from './page/main'
-import Logout from './page/Logout'
-import Register from './page/Register'
+import Logout from './page/Pagelogin/Logout'
+import Register from './page/Pagelogin/Register'
 import Announcement from './page/Pagelandding/Announcement'
 import UseData from './components/Body/UserDataDisplay'
-import Profile from './page/Profile'
-import Status from './page/status'
+import Profile from './page/PageUser/Profile'
+import Status from './page/PageUser/status'
 import ActivityForm from './page/Pageadmin/ActivityForm'
-import Detailpage from './page/Detail'
+import Detailpage from './page/Pagehome/Detail'
 
 function App() {
   return (

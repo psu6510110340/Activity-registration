@@ -1,11 +1,11 @@
 import Grid from '@mui/material/Grid';
-import Navbar from '../components/Body/StatusNavbar';
-import ComplexGrid from '../components/Body/Headstatus';
-import CardStatus from '../components/Body/UserStatusCard';
-import Logout from './Logout';
+import Navbar from '../../components/Body/StatusNavbar';
+import ComplexGrid from '../../components/Body/Headstatus';
+import CardStatus from '../../components/Body/UserStatusCard';
+import Logout from '../Pagelogin/Logout';
 import { Button } from 'react-bootstrap';
 import Link from '@mui/material/Link';
-import CardLog from '../components/Body/Popupcard';
+import CardLog from '../../components/Body/Popupcard';
 
 
 const getUserData = () => {

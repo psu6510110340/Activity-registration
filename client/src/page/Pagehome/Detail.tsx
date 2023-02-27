@@ -1,15 +1,15 @@
-import NavBar from "../components/NavBar"
+import NavBar from "../../components/NavBar"
 import { useEffect,useState } from 'react';
 import {Button} from '@mui/material';
 import { Box} from '@mui/system';
-import '../index.css'
+import '../../index.css'
 import FigureImage from 'react-bootstrap/FigureImage'
 import Typography from '@mui/material/Typography/Typography';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Row, Col, Container, Form} from "react-bootstrap";
 import Card from '@mui/material/Card';
-import MDT from "../Models/ModelTour";
-import Repo from '../Repository'
+import MDT from "../../Models/ModelTour";
+import Repo from '../../Repository'
 import ReactMarkdown from "react-markdown";
 import CardContent from '@mui/material/CardContent';
 

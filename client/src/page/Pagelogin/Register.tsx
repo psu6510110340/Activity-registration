@@ -10,8 +10,8 @@ import { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
-import logo from '../image/logo.png';
-import backgroundImage from '../image/PSU.jpg';
+import logo from '../../image/logo.png';
+import backgroundImage from '../../image/PSU.jpg';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
