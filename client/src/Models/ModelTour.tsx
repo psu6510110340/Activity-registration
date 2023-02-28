@@ -9,6 +9,7 @@ export default interface MDT {
         StartRegister: Date;
         EndRegister: Date;
         Number: Number;
+        likeCount: Number;
         image: {
             data: {
                 attributes: {

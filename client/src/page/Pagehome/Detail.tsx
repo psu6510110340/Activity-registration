@@ -66,6 +66,7 @@ const Detailpage = () => {
                                     <p>ระยะเวลาการสมัคร : {data?.StartRegister.toString()} - {data?.EndRegister.toString()}</p>
                                 </Typography>
                                 <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"10px"}}>จำนวนที่รับสมัคร : {data?.Number.toString()} คน</Typography>
+                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"10px"}}>จำนวนคนสมัคร : {data?.likeCount.toString()} คน</Typography>
                             <Button size="large" style={{background:"#1976d2", color:"white", width:"9%", fontSize: 20, height:"5vh"}} sx={{'&:hover': {background: '#ffffff', opacity: [0.9, 0.8, 0.7]}}}>สมัคร</Button>
                             </CardContent>
                             <Col>
