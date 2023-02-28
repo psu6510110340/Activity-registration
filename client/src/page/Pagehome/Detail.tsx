@@ -48,7 +48,10 @@ const Detailpage = () => {
                         padding: '1rem' 
                      }}  padding-left = "50px" padding-right = "50px" >
                         <FigureImage src={image} width={'60%'} height={'60%'} style={{display: 'block', margin: 'auto',marginBottom:"25px"}} />
-                        <Typography style={{ fontSize: 30, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
+                        <Typography style={{ fontSize: 30, fontWeight: "bold", textAlign: "left", color: "black", textAlignLast: "left",marginBottom:"-15px"}}>
+                                    <p>{data?.title.toString()}</p>
+                                </Typography>
+                        <Typography style={{ fontSize: 25, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left"}}>รายละเอียด</Typography>
                             <Box width="auto" height="auto"
                             sx={{
                                     overflow:"auto",
@@ -65,8 +68,8 @@ const Detailpage = () => {
                                 <Typography style={{ fontSize: 16, textAlign: "left", color: "black", textAlignLast: "left",marginBottom:"2px"}}>
                                     <p>ระยะเวลาการสมัคร : {data?.StartRegister.toString()} - {data?.EndRegister.toString()}</p>
                                 </Typography>
-                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"10px"}}>จำนวนที่รับสมัคร : {data?.Number.toString()} คน</Typography>
-                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"10px"}}>จำนวนคนสมัคร : {data?.likeCount.toString()} คน</Typography>
+                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"-12px"}}>จำนวนที่รับสมัคร : {data?.Number.toString()} คน</Typography>
+                                <Typography style={{ fontSize: 22, textAlign: "left", fontWeight: "bold", color: "black", textAlignLast: "left",marginTop:"15px",marginBottom:"15px"}}>จำนวนคนสมัคร : {data?.likeCount.toString()} คน</Typography>
                             <Button size="large" style={{background:"#1976d2", color:"white", width:"9%", fontSize: 20, height:"5vh"}} sx={{'&:hover': {background: '#ffffff', opacity: [0.9, 0.8, 0.7]}}}>สมัคร</Button>
                             </CardContent>
                             <Col>
