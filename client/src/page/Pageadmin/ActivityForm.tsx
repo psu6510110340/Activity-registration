@@ -21,6 +21,7 @@ const ActivityForm = (): JSX.Element => {
   const [EndRegister, setEndRegister] =useState<string>("")
   const [Number, setNumber] = useState<number>(0)
   const MySwal = withReactContent(Swal);
+  const [likeCount, setLikeCount] = useState<number>(0)
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -61,11 +62,11 @@ const ActivityForm = (): JSX.Element => {
             EndActivity: EndDate.toISOString().substring(0, 10),
             StartRegister: startRegister.toISOString().substring(0, 10),
             EndRegister: endRegister.toISOString().substring(0, 10),
-            Number
+            Number,
+            likeCount
           },
         }),
       });
-  
       if (response.ok) {
         // Show success message using SweetAlert2
         MySwal.fire({
@@ -140,6 +141,13 @@ const ActivityForm = (): JSX.Element => {
           variant="outlined"
           fullWidth
           value={Number}
+          onChange={(event) => setNumber(parseInt(event.target.value))}
+        />
+        <TextField
+          type="number"
+          variant="outlined"
+          fullWidth
+          value={likeCount}
           onChange={(event) => setNumber(parseInt(event.target.value))}
         />
 
