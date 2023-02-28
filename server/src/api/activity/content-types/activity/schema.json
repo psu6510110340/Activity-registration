@@ -47,6 +47,11 @@
     },
     "detail": {
       "type": "richtext"
+    },
+    "likeCount": {
+      "type": "integer",
+      "required": true,
+      "max": 100
     }
   }
 }
