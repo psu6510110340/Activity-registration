@@ -28,7 +28,7 @@ const checkUserRole = async (token: string): Promise<boolean> => {
     });
 // console.log(data)
     if (data.role.name === 'Admin') {
-      window.location.href = '/Admin';
+      window.location.href = '/admin';
       return true;
     }
   } catch (error) {

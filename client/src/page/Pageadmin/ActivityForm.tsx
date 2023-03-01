@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography/Typography';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {Grid} from '@mui/material';
+import NavBaradmin from "../../components/NavBarAdmin";
 interface IUser {
   username: string;
   email: string;
@@ -96,7 +97,7 @@ const ActivityForm = (): JSX.Element => {
 
   return (
     <Grid container justifyContent="center">
-      <Navbar />
+      <NavBaradmin />
       <Grid item xs={12} sm={8} md={6}>
         <label><h1>Create Activity</h1></label>
         <label>ชื่อกิจกรรม</label>

@@ -1,12 +1,12 @@
 import { count } from 'console'
 import React from 'react'
 import { Button } from 'react-bootstrap'
-import Navbar from '../../components/NavBar'
+import NavbarAdmin from '../../components/NavBarAdmin'
 
 const adminhome = () => {
   return (
     <div> 
-        <Navbar/>
+        <NavbarAdmin/>
         <Button href='/adminForm'>สร้างกิจกรรม</Button>
     </div>
   )
