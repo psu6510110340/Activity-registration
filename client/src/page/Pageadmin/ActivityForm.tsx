@@ -4,7 +4,7 @@ import { Button, TextField } from "@mui/material";
 import Typography from '@mui/material/Typography/Typography';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-
+import {Grid} from '@mui/material';
 interface IUser {
   username: string;
   email: string;
@@ -95,75 +95,80 @@ const ActivityForm = (): JSX.Element => {
   };
 
   return (
-    <div>
+    <Grid container justifyContent="center">
       <Navbar />
-      <label>ชื่อกิจกรรม</label>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          variant="outlined"
-          fullWidth
-          value={title}
-          onChange={(event) => setTitle(event.target.value)} />
-        <label>รายละเอียด</label>
-        <TextField
-          variant="outlined"
-          fullWidth
-          multiline
-          value={description}
-          onChange={(event) => setDescription(event.target.value)}
-        />
-        <label>วันเริ่มต้นกิจกรรม</label>
-        <TextField
-          type="date"
-          variant="outlined"
-          fullWidth
-          value={startActivity}
-          onChange={(event) => setStartActivity(event.target.value)}
-        />
-        <label>วันสิ้นสุดกิจกรรม</label>
-        <TextField
-          type="date"
-          variant="outlined"
-          fullWidth
-          value={EndActivity}
-          onChange={(event) => setEndActivity(event.target.value)}
-        />
-        <label>วันเริ่มต้นสมัครกิจกรรม</label>
-        <TextField
-          type="date"
-          variant="outlined"
-          fullWidth
-          value={StartRegister}
-          onChange={(event) => setStartRegister(event.target.value)}
-        />
-        <label>วันสิ้นสุดการสมัครกิจกรรม</label>
-        <TextField
-          type="date"
-          variant="outlined"
-          fullWidth
-          value={EndRegister}
-          onChange={(event) => setEndRegister(event.target.value)}
-        />
-        <label>จำนวนคนรับเข้ากิจกรรม</label>
-        <TextField
-          type="number"
-          variant="outlined"
-          fullWidth
-          value={Number}
-          onChange={(event) => setNumber(parseInt(event.target.value))}
-        />
-        <input
-          type="file"
-          accept="image/*"
-          style={{ display: "flex" }}
-          onChange={(event) => setImage(event.target.files ? event.target.files[0] : null)}
-        />
-        <Button type="submit" variant="contained" color="primary">
-          Create Activity
-        </Button>
-      </form>
-    </div>
+      <Grid item xs={12} sm={8} md={6}>
+        <label><h1>Create Activity</h1></label>
+        <label>ชื่อกิจกรรม</label>
+        <form onSubmit={handleSubmit}>
+          <TextField
+            variant="outlined"
+            fullWidth
+            value={title}
+            onChange={(event) => setTitle(event.target.value)}
+          />
+          <label>รายละเอียด</label>
+          <TextField
+            variant="outlined"
+            fullWidth
+            multiline
+            value={description}
+            onChange={(event) => setDescription(event.target.value)}
+          />
+          <label>วันเริ่มต้นกิจกรรม</label>
+          <TextField
+            type="date"
+            variant="outlined"
+            fullWidth
+            value={startActivity}
+            onChange={(event) => setStartActivity(event.target.value)}
+          />
+          <label>วันสิ้นสุดกิจกรรม</label>
+          <TextField
+            type="date"
+            variant="outlined"
+            fullWidth
+            value={EndActivity}
+            onChange={(event) => setEndActivity(event.target.value)}
+          />
+          <label>วันเริ่มต้นสมัครกิจกรรม</label>
+          <TextField
+            type="date"
+            variant="outlined"
+            fullWidth
+            value={StartRegister}
+            onChange={(event) => setStartRegister(event.target.value)}
+          />
+          <label>วันสิ้นสุดการสมัครกิจกรรม</label>
+          <TextField
+            type="date"
+            variant="outlined"
+            fullWidth
+            value={EndRegister}
+            onChange={(event) => setEndRegister(event.target.value)}
+          />
+          <label>จำนวนคนรับเข้ากิจกรรม</label>
+          <TextField
+            type="number"
+            variant="outlined"
+            fullWidth
+            value={Number}
+            onChange={(event) => setNumber(parseInt(event.target.value))}
+          />
+          <label>ใส่ไฟล์รูปภาพ</label>
+          <input
+            type="file"
+            accept="image/*"
+            style={{ display: "flex" }}
+            onChange={(event) => setImage(event.target.files ? event.target.files[0] : null)}
+          />
+          <Button type="submit" variant="contained" color="primary">
+            Create Activity
+          </Button>
+        </form>
+      </Grid>
+    </Grid>
   );
-};
+}
 
 export default ActivityForm
