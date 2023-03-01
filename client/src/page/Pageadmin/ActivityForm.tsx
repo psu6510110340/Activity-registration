@@ -16,12 +16,13 @@ const ActivityForm = (): JSX.Element => {
   const [description, setDescription] = useState<string>("");
   const [startActivity, setStartActivity] = useState<string>("");
   const [user, setUser] = useState<IUser | null>(null);
-  const [EndActivity, setEndActivity ] = useState<string>("");
+  const [EndActivity, setEndActivity] = useState<string>("");
   const [StartRegister, setStartRegister] = useState<string>("");
-  const [EndRegister, setEndRegister] =useState<string>("")
+  const [EndRegister, setEndRegister] = useState<string>("")
   const [Number, setNumber] = useState<number>(0)
   const MySwal = withReactContent(Swal);
-  const [likeCount, setLikeCount] = useState<number>(0)
+  const [likeCount, setLikeCount] = useState<number>(0);
+  const [image, setImage] = useState<File | null>(null);
 
   useEffect(() => {
     const userData = localStorage.getItem("user");
@@ -47,26 +48,27 @@ const ActivityForm = (): JSX.Element => {
     const startRegister = new Date(StartRegister);
     const endRegister = new Date(EndRegister);
 
-    try {
-      const response = await fetch("http://localhost:1337/api/activities", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.jwt}`,
-        },
-        body: JSON.stringify({
-          data: {
-            title,
-            description,
-            StartActivity: startDate.toISOString().substring(0, 10),
-            EndActivity: EndDate.toISOString().substring(0, 10),
-            StartRegister: startRegister.toISOString().substring(0, 10),
-            EndRegister: endRegister.toISOString().substring(0, 10),
-            Number,
-            likeCount
-          },
-        }),
-      });
+    const formData = new FormData();
+  formData.append("files.image", image!); // ! is used to tell TypeScript that image is not null or undefined
+  formData.append("data", JSON.stringify({
+    title,
+    description,
+    StartActivity: startDate.toISOString().substring(0, 10),
+    EndActivity: EndDate.toISOString().substring(0, 10),
+    StartRegister: startRegister.toISOString().substring(0, 10),
+    EndRegister: endRegister.toISOString().substring(0, 10),
+    Number,
+    likeCount,
+  }));
+
+  try {
+    const response = await fetch("http://localhost:1337/api/activities", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${user.jwt}`,
+      },
+      body: formData,
+    });
       if (response.ok) {
         // Show success message using SweetAlert2
         MySwal.fire({
@@ -95,12 +97,14 @@ const ActivityForm = (): JSX.Element => {
   return (
     <div>
       <Navbar />
+      <label>ชื่อกิจกรรม</label>
       <form onSubmit={handleSubmit}>
         <TextField
           variant="outlined"
           fullWidth
           value={title}
-          onChange={(event) => setTitle(event.target.value)}/>
+          onChange={(event) => setTitle(event.target.value)} />
+        <label>รายละเอียด</label>
         <TextField
           variant="outlined"
           fullWidth
@@ -108,6 +112,7 @@ const ActivityForm = (): JSX.Element => {
           value={description}
           onChange={(event) => setDescription(event.target.value)}
         />
+        <label>วันเริ่มต้นกิจกรรม</label>
         <TextField
           type="date"
           variant="outlined"
@@ -115,6 +120,7 @@ const ActivityForm = (): JSX.Element => {
           value={startActivity}
           onChange={(event) => setStartActivity(event.target.value)}
         />
+        <label>วันสิ้นสุดกิจกรรม</label>
         <TextField
           type="date"
           variant="outlined"
@@ -122,6 +128,7 @@ const ActivityForm = (): JSX.Element => {
           value={EndActivity}
           onChange={(event) => setEndActivity(event.target.value)}
         />
+        <label>วันเริ่มต้นสมัครกิจกรรม</label>
         <TextField
           type="date"
           variant="outlined"
@@ -129,6 +136,7 @@ const ActivityForm = (): JSX.Element => {
           value={StartRegister}
           onChange={(event) => setStartRegister(event.target.value)}
         />
+        <label>วันสิ้นสุดการสมัครกิจกรรม</label>
         <TextField
           type="date"
           variant="outlined"
@@ -136,6 +144,7 @@ const ActivityForm = (): JSX.Element => {
           value={EndRegister}
           onChange={(event) => setEndRegister(event.target.value)}
         />
+        <label>จำนวนคนรับเข้ากิจกรรม</label>
         <TextField
           type="number"
           variant="outlined"
@@ -143,14 +152,12 @@ const ActivityForm = (): JSX.Element => {
           value={Number}
           onChange={(event) => setNumber(parseInt(event.target.value))}
         />
-        <TextField
-          type="number"
-          variant="outlined"
-          fullWidth
-          value={likeCount}
-          onChange={(event) => setNumber(parseInt(event.target.value))}
+        <input
+          type="file"
+          accept="image/*"
+          style={{ display: "flex" }}
+          onChange={(event) => setImage(event.target.files ? event.target.files[0] : null)}
         />
-
         <Button type="submit" variant="contained" color="primary">
           Create Activity
         </Button>
