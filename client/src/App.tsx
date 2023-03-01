@@ -11,6 +11,7 @@ import Profile from './page/PageUser/Profile'
 import Status from './page/PageUser/status'
 import ActivityForm from './page/Pageadmin/ActivityForm'
 import Detailpage from './page/Pagehome/Detail'
+import Page from './page/Pageadmin/Checkadmin'
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
       <Routes>
         <Route index element={<Announcement/>} />
         <Route path="/Home" element={<Home />}/>
-          <Route path="/Detail/:id" element={<Detailpage />} />
+        <Route path="/Detail/:id" element={<Detailpage />} />
         <Route path="/index" element={<Index />} />
         <Route path="/login" element={<Login />} />
         <Route path="/main" element={ <Main />} />
@@ -28,6 +29,8 @@ function App() {
         <Route path="/Status" element={<Status />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path='/admin' element ={<ActivityForm/>}/>
+        <Route path='/checkadmin' element ={<Page/>}/>
+
       </Routes>
     </BrowserRouter>
   )
