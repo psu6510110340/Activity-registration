@@ -10,9 +10,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-import { Height } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import DeleteIcon from '@mui/icons-material/Delete';
+import { userData } from "../../helper";
 import TMD from "../../Models/ModelAdmin";
+import { useNavigate } from "react-router-dom";
+
+const user = userData();
 
 function Fixdisplay() {
   const [TMD, setTMD] = useState<tmd[]>([]);
@@ -26,6 +29,23 @@ function Fixdisplay() {
       setTMD(result);
     }
   };
+
+  async function handleDeleteClick(id: string) {
+    try {
+      const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${user.jwt}`
+        }
+      });
+      const data = await resp.json();
+      console.log(data);
+      fetchtmd();
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   useEffect(() => {
     fetchtmd();
@@ -46,7 +66,7 @@ function Fixdisplay() {
                   <h2>{tmd.attributes.title}</h2>
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  <p>ระยะเวลากิจกรรม </p>
+                  <p>ระยะเวลากิจกรรม</p>
                   <p>
                     {tmd.attributes.StartActivity.toString()} -{" "}
                     {tmd.attributes.EndActivity.toString()}
@@ -58,10 +78,16 @@ function Fixdisplay() {
                   </p>
                   <h3>จำนวนรับ : {tmd.attributes.Number.toString()} คน</h3>
                 </Typography>
-                <CardActions onClick={()=>navigate(`/Detail/${tmd.id}`)}>
+                <CardActions>
+                  <Button
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => handleDeleteClick(tmd.id.toString())}
+                  >
+                    Delete
+                  </Button>
                 </CardActions>
               </CardContent>
-              
             </Card>
           </Box>
         </Grid>

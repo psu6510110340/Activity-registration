@@ -20,6 +20,20 @@ export class CampRepository implements IRepository <MDT> {
         const resp = await fetch(`${this.urlPrefix}&filters[id][$eq]=${id}`);
         const data = await resp.json();
         return data.data
+
     }
-}
+    async delete(id: string): Promise<MDT[] | null>{
+        const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${this.token}`
+            }
+        });
+        const data = await resp.json();
+        return data.data
+    }
+    }
+
+
 
