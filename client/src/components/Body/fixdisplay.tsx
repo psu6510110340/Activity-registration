@@ -14,7 +14,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { userData } from "../../helper";
 import TMD from "../../Models/ModelAdmin";
 import { useNavigate } from "react-router-dom";
-
+import Swal from 'sweetalert2'
 const user = userData();
 
 function Fixdisplay() {
@@ -31,19 +31,32 @@ function Fixdisplay() {
   };
 
   async function handleDeleteClick(id: string) {
-    try {
-      const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${user.jwt}`
-        }
-      });
-      const data = await resp.json();
-      console.log(data);
-      fetchtmd();
-    } catch (err) {
-      console.error(err);
+    const result = await Swal.fire({
+      title: 'คุณยืนยันที่จะลบหรือไม่?',
+      text: "หากคุณยืนยันคุณจะไม่สามารถย้อนกลับได้",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก'
+    })
+  
+    if (result.isConfirmed) {
+      try {
+        const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.jwt}`
+          }
+        });
+        const data = await resp.json();
+        console.log(data);
+        fetchtmd();
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
