@@ -13,6 +13,7 @@ import ActivityForm from './page/Pageadmin/ActivityForm'
 import Detailpage from './page/Pagehome/Detail'
 import Page from './page/Pageadmin/Checkadmin'
 import Adminhome from './page/Pageadmin/adminhome'
+import Fixdisplay from './components/Body/fixdisplay'
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
         <Route path='/adminForm' element ={<ActivityForm/>}/>
         <Route path='/checkadmin' element ={<Page/>}/>
         <Route path='/admin' element = {<Adminhome/>}/>
+        <Route path='/fixdisplay' element = {<Fixdisplay/>}/>
       </Routes>
     </BrowserRouter>
   )

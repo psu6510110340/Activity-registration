@@ -1,0 +1,11 @@
+h1 {
+    text-align: center;
+    background-color: rgba(30, 145, 246, 0.386);
+    
+}
+p.activity {
+    font-size: 30px;
+    text-align: right;
+    color:red;
+    margin: 20px;
+}
