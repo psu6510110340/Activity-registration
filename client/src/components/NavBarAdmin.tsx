@@ -1,19 +1,12 @@
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 import logo from '../image/WhiteLogo.png';
-import { TextField } from '@mui/material';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import { styled, alpha } from '@mui/material/styles';
 import Menu, { MenuProps } from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import Divider from '@mui/material/Divider';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import ArrowRightIcon from '@mui/icons-material/ArrowRight';
-import ButtonUser from './Body/Buttonuser';
+import Buttonadmin from './Body/Buttonadmin';
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem('usser') || '';
@@ -102,7 +95,7 @@ function NavBaradmin () {
               >
               </Box>
               
-              <ButtonUser/>
+              <Buttonadmin/>
 
           </Toolbar>
         </Container>
