@@ -45,3 +45,13 @@
     background-image: url(../../image/student.png);
 	background-size: 100% 100%;
 }
+.backround{
+	background-color: hsl(188, 56%, 89%);
+}
+.line{
+	margin-top: -600px;
+	margin-left: 55%;
+	width: 5px; /* กำหนดความกว้างของ box */
+	height: 590px; /* กำหนดความสูงของ box */
+	background-color: #6890F8; /* กำหนดสีพื้นหลังของ box */
+}
