@@ -1,8 +1,13 @@
 import React from 'react';
 import videoBg from '../assets/videoBg.mp4';
 import './Announcement.css'
+import { useEffect } from 'react';
+
 
 const Main: React.FC = () => {
+  useEffect(() => {
+    localStorage.removeItem('user')
+})
   return (
     <div className='main'>
         <div className="overlay"></div>
