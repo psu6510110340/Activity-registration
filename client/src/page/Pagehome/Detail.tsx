@@ -22,7 +22,6 @@ const getUserData = () => {
   }
   return false;
 };
-
 const Detailpage = () => {
   const [userresult, setUserResult] = useState<MDT[]>([]);
   const [quantity, setQuantity] = useState(1);
@@ -40,40 +39,53 @@ const Detailpage = () => {
       console.log(error);
     }
   };
-  const handleSignupClick = () => {
+  async function handleSignupClick(id: string) {
     const userData = getUserData();
     if (userData) {
-      Swal.fire({
-        title: "คุณมั่นใจ?",
-        text: "คุณต้องการจะสมัครกิจกรรมนี้หรือไม่",
-        icon: "question",
-        showCancelButton: true,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "สำเร็จ",
-            text: "สมัครกิจกรรมสำเร็จแล้ว",
-            icon: "success",
-            confirmButtonText: "OK",
-          }).then(() => {
-            // navigate('/success');
-          });
-        }
-      });
-    } else {
-      Swal.fire({
-        title: "คุณไม่มีสิทธิ์เข้าถึง",
-        text: "กรุณาล็อคอิน",
-        icon: "error",
-        confirmButtonText: "OK",
-      }).then(() => {
-        navigate("/login");
-      });
+    const result = await Swal.fire({
+      title: 'คุณมั่นใจ?',
+      text: "คุณต้องการจะสมัครกิจกรรมนี้หรือไม่",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'ยืนยัน',
+      cancelButtonText: 'ยกเลิก'
+    })
+  
+    if (result.isConfirmed) {
+      try {
+        const resp = await fetch(`http://localhost:1337/api/activity/${id}/like`, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${userData.jwt}`
+          }
+        });
+        const data = await resp.json();
+        console.log(data);
+        fetchData();
+        Swal.fire({
+          title: "สำเร็จ",
+          text: "สมัครกิจกรรมสำเร็จแล้ว",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
-  };
-
+  } else {
+    Swal.fire({
+      title: "คุณไม่มีสิทธิ์เข้าถึง",
+      text: "กรุณาล็อคอิน",
+      icon: "error",
+      confirmButtonText: "OK",
+    }).then(() => {
+      navigate("/login");
+    });
+  }
+}
   useEffect(() => {
     fetchData();
   }, [params.id]);
@@ -210,7 +222,7 @@ const Detailpage = () => {
                       opacity: [0.9, 0.8, 0.7],
                     },
                   }}
-                  onClick={handleSignupClick}
+                  onClick={() => params.id && handleSignupClick(params.id.toString())}
                 >
                   สมัคร
                 </Button>
