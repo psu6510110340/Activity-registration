@@ -40,7 +40,7 @@
 }
 .Image{
 	margin-top: 25% ;
-    min-height: 230px;
+    min-height: 350px;
 	max-width: 650px;
     background-image: url(../../image/student.png);
 	background-size: 100% 100%;

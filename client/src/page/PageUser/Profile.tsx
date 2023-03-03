@@ -1,8 +1,8 @@
-import Navbar from '../../components/Body/StatusNavbar';
+import NavBarDetile from '../../components/NavBarDetile';
 import CardLog from '../../components/Body/Popupcard';
 import Typography from '@mui/material/Typography';
 import './Profile.css'
-import { AppBar,Container, Toolbar } from '@mui/material';
+import { AppBar,Container, Icon, Toolbar } from '@mui/material';
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem('user') || '';
@@ -25,7 +25,7 @@ const Profile = () => {
   return (
     <><div className='backround'>
         <div>
-          <Navbar />
+          <NavBarDetile />
           <a className='my_button1'>ตรวจเช็คสถานะ</a>
           <a className='my_button2'>กิจกรรมที่เคยเข้าร่วม</a>
           <div className='Image'></div>

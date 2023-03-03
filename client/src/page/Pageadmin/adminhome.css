@@ -9,3 +9,8 @@ p.activity {
     color:red;
     margin: 20px;
 }
+p.activity :hover {
+    color: red;
+    font-size: 35px;
+    transition: 1000ms;
+}
