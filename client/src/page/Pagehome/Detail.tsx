@@ -40,6 +40,7 @@ const Detailpage = () => {
     }
   };
   async function handleSignupClick(id: string) {
+    if (data?.likeCount!=data?.Number){
     const userData = getUserData();
     if (userData) {
     const result = await Swal.fire({
@@ -84,6 +85,15 @@ const Detailpage = () => {
     }).then(() => {
       navigate("/login");
     });
+  }
+  } else {
+    Swal.fire({
+      title: "เต็ม",
+      text: "ขณะนี้มีผู้ลงทะเบียนกิจกรรมเต็มแล้ว",
+      icon: "warning",
+      confirmButtonText: "OK",
+    });
+
   }
 }
   useEffect(() => {
