@@ -1,8 +1,6 @@
 import { BrowserRouter, Route, Routes} from 'react-router-dom'
 import Home from './page/Pagehome/Home'
-import Index from './page/index'
 import Login from './page/Pagelogin/login'
-import Main from './page/main'
 import Logout from './page/Pagelogin/Logout'
 import Register from './page/Pagelogin/Register'
 import Announcement from './page/Pagelandding/Announcement'
@@ -22,9 +20,7 @@ function App() {
         <Route index element={<Announcement/>} />
         <Route path="/Home" element={<Home />}/>
         <Route path="/Detail/:id" element={<Detailpage />} />
-        <Route path="/index" element={<Index />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/main" element={ <Main />} />
         <Route path="/register" element={<Register />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/UserDataDisplay" element={<UseData />} />
