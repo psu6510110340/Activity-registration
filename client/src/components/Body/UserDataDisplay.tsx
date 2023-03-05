@@ -56,6 +56,7 @@ function UseData() {
                     {mdt.attributes.EndRegister.toString()}
                   </p>
                   <h3>จำนวนรับ : {mdt.attributes.Number.toString()} คน</h3>
+                  <h3>จำนวนสมัคร : {mdt.attributes.likeCount.toString()} คน</h3>
                 </Typography>
                 <CardActions onClick={()=>navigate(`/Detail/${mdt.id}`)}>
                   <Button variant="outlined" style={{ width: "100%" }} sx={{'&:hover': {background: '#9fb4f2', opacity: [0.1, 0.3, 1]}}}>
