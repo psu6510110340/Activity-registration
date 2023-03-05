@@ -154,7 +154,7 @@ const Detailpage = () => {
                 padding: "0.5rem",
               }}
             >
-              <ReactMarkdown>{data?.detail as string}</ReactMarkdown>
+              <ReactMarkdown>{data?.description as string}</ReactMarkdown>
             </Box>
             <Row
               xs="auto"
