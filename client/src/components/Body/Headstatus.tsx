@@ -54,10 +54,10 @@ const ComplexGrid = () => {
                 --------------------------------------------------
                 </Typography>
                 <Typography variant="body2" gutterBottom>
-                    กิจกรรมที่เข้าร่วม X
+                    กิจกรรมที่เข้าร่วม 
                 </Typography>
                 <Typography variant="body2" >
-                    รอดำเนินการ X
+                    รอดำเนินการ กำลังตรวจสอบ
                 </Typography>
                 </Grid>
             </Grid>

@@ -76,7 +76,6 @@ function NavBarDetile () {
   }));
 
   const userData = getUserData();
-  
     return (
         <AppBar position="static" >
           <Container maxWidth="xl">
@@ -90,7 +89,6 @@ function NavBarDetile () {
                   margin: '5px 25px 5px 0px'
                 }}
               />
-             
               <Box
                 sx={{
                   width: '800px',
@@ -100,13 +98,8 @@ function NavBarDetile () {
                   margin: '10px 25px 10px 0px'
                 }}
               >
-                
               </Box>
-              
-              
-
               <div>
-               
                 <StyledMenu
                   id="demo-customized-menu"
                   MenuListProps={{
@@ -128,7 +121,6 @@ function NavBarDetile () {
                 </StyledMenu>
               </div>
               <ButtonUser/>
-
           </Toolbar>
         </Container>
       </AppBar>

@@ -1,5 +1,5 @@
 import Grid from '@mui/material/Grid';
-import Navbar from '../../components/Body/StatusNavbar';
+import NavBarDetile from '../../components/NavBarDetile';
 import ComplexGrid from '../../components/Body/Headstatus';
 import CardStatus from '../../components/Body/UserStatusCard';
 import Logout from '../Pagelogin/Logout';
@@ -29,14 +29,9 @@ const Status = () => {
   return (
     <div>
       <div>
-        <Navbar />
+        <NavBarDetile />
         <ComplexGrid />
         <CardStatus/>
-        <Button>
-          <Link href="/logout" variant="body2">
-            Logout
-          </Link>
-        </Button>
       </div>
     </div>
   );
