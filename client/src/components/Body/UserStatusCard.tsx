@@ -26,32 +26,24 @@ const CardStatus = () => {
     >
       <Grid container spacing={2}>
         <Grid item>
-          <ButtonBase sx={{ width: 128, height: 128 }}>
-            <Img alt="complex" src="/static/images/grid/complex.jpg" />
-          </ButtonBase>
         </Grid>
         <Grid item xs={12} sm container>
           <Grid item xs container direction="column" spacing={2}>
             <Grid item xs>
               <Typography gutterBottom variant="subtitle1" component="div">
-                Mock
+                รายการกิจกรรม
               </Typography>
               <Typography variant="body2" gutterBottom>
-                Mock
+                กิจกรรม..............
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                Mock
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography sx={{ cursor: 'pointer' }} variant="body2">
-                Mock
+                กิจกรม..............
               </Typography>
             </Grid>
           </Grid>
           <Grid item>
             <Typography variant="subtitle1" component="div">
-                Mock
+                Status
             </Typography>
           </Grid>
         </Grid>
