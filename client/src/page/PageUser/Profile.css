@@ -1,57 +1,22 @@
 .my_button1{
     position: absolute;
-	margin-top: 15% ;
-	margin-left: 5% ;
+	margin-top: 20px ;
+	margin-right: 20px;
     width: auto;
     height: auto;
-    top: 0;
     color: rgb(0, 0, 0);
-	font-size: 28px;
-    padding: 2px 10px;
-    -moz-box-shadow: 4px 2px 6px 0px #000a27;
-	-webkit-box-shadow: 4px 2px 6px 0px #0040ff;
+	font-size: 32px;
+    padding: 5px 80px;
+    -moz-box-shadow: 4px 2px 6px 0px #5a19ff;
+	-webkit-box-shadow: 4px 2px 6px 0px #001450;
 	box-shadow: 4px 2px 6px 0px hsl(226, 100%, 50%);
-	background-color:#96bcff;
+	background-color:#669eff;
 	-webkit-border-radius:5px;
 	-moz-border-radius:5px;
 	border-radius:5px;
 	display:inline-block;
 	cursor:pointer;
 }
-.my_button2{
-    position: absolute;
-	margin-top: 18%;
-	margin-left: 5%;
-    width: auto;
-    height: auto;
-    top: 1;
-    color: rgb(0, 0, 0);
-	font-size: 28px;
-    padding: 2px 10px;
-    -moz-box-shadow: 4px 2px 6px 0px #000a27;
-	-webkit-box-shadow: 4px 2px 6px 0px #0040ff;
-	box-shadow: 4px 2px 6px 0px hsl(226, 100%, 50%);
-	background-color:#96bcff;
-	-webkit-border-radius:5px;
-	-moz-border-radius:5px;
-	border-radius:5px;
-	display:inline-block;
-	cursor:pointer;
-}
-.Image{
-	margin-top: 25% ;
-    min-height: 350px;
-	max-width: 650px;
-    background-image: url(../../image/student.png);
-	background-size: 100% 100%;
-}
-.backround{
-	background-color: hsl(188, 56%, 89%);
-}
-.line{
-	margin-top: -600px;
-	margin-left: 55%;
-	width: 5px; /* กำหนดความกว้างของ box */
-	height: 590px; /* กำหนดความสูงของ box */
-	background-color: #6890F8; /* กำหนดสีพื้นหลังของ box */
+.color{
+	background-color: hsl(224, 100%, 92%);
 }

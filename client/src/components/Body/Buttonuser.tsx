@@ -94,7 +94,7 @@ const ButtonUser = () => {
             >
               {settings.map((setting) => (
                 <Link
-                  to={setting === "Logout" ? "/login" : "/status"}
+                  to={setting === "Logout" ? "/login" : "/profile"}
                   key={setting}
                   style={{ textDecoration: "none" }}
                 >
