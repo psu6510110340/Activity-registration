@@ -169,15 +169,9 @@ export default function RegisterPage() {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
-<<<<<<< HEAD:client/src/page/Register.tsx
                     helperText="Only @email.psu.ac.th or @psu.ac.th"
                     inputProps={{ pattern: "^[a-zA-Z0-9._%+-]+@(psu\\.ac\\.th|email\\.psu\\.ac\\.th)$" }}
                     onChange={handleChange}
-=======
-                    InputProps={{endAdornment: <InputAdornment position="end">@psu.ac.th</InputAdornment>,}}
-                    onChange={email}
->>>>>>> develop:client/src/page/Pagelogin/Register.tsx
-                    autoFocus
                 />
                 <TextField
                     margin="normal"
