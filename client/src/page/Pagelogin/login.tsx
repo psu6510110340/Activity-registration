@@ -144,7 +144,6 @@ export default function SignInSide() {
                     label="Email Address"
                     name="identifier"
                     autoComplete="email"
-                    helperText="Only @email.psu.ac.th or @psu.ac.th"
                     onChange={handleChange}
                     autoFocus
                 />
