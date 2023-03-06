@@ -17,27 +17,47 @@
       "required": true
     },
     "description": {
-      "type": "text"
+      "type": "richtext"
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
-      "required": false
+      ]
     },
-    "datetime": {
-      "type": "string"
+    "StartActivity": {
+      "type": "date"
     },
-    "receive": {
+    "EndActivity": {
+      "type": "date"
+    },
+    "StartRegister": {
+      "type": "date"
+    },
+    "EndRegister": {
+      "type": "date"
+    },
+    "Number": {
       "type": "integer"
     },
-    "apply": {
-      "type": "integer"
+    "detail": {
+      "type": "richtext"
+    },
+    "likeCount": {
+      "type": "integer",
+      "required": true,
+      "max": 100
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "activities"
     }
   }
 }

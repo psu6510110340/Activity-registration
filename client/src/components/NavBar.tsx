@@ -1,260 +1,158 @@
-import React from 'react';
-import Button from '@mui/material/Button';
-import CssBaseline from '@mui/material/CssBaseline';
-import TextField from '@mui/material/TextField';
-import Link from '@mui/material/Link';
-import Paper from '@mui/material/Paper';
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider ,ThemeOptions } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import logo from '../image/WhiteLogo.png';
+import { TextField } from '@mui/material';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import { styled, alpha } from '@mui/material/styles';
+import Menu, { MenuProps } from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Divider from '@mui/material/Divider';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import ArrowRightIcon from '@mui/icons-material/ArrowRight';
+import ButtonUser from './Body/Buttonuser';
 
-const NavBar = () => {
-  return (
-    <div
-      style={{
-        width: '100%',
-        display: 'flex',
-        overflow: 'auto',
-        minHeight: '100vh',
-        alignItems: 'center',
-        borderColor: 'var(--dl-color-gray-black)',
-        borderWidth: '5px',
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        backgroundColor: '#D9D9D9',
+const getUserData = () => {
+  const stringfiedUser = localStorage.getItem('usser') || '';
+  if (stringfiedUser) {
+    return JSON.parse(stringfiedUser);
+  }
+  return false;
+};
+
+function NavBar () {
+
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const StyledMenu = styled((props: MenuProps) => (
+    <Menu
+      elevation={0}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
       }}
-    >
-      <header
-        data-role="Header"
-        style={{
-          width: '100%',
-          height: '97px',
-          display: 'flex',
-          maxWidth: '100%',
-          position: 'relative',
-          boxShadow: '5px 5px 10px 0px #545454',
-          alignItems: 'center',
-          paddingTop: 'var(--dl-space-space-twounits)',
-          paddingLeft: 'var(--dl-space-space-threeunits)',
-          paddingRight: 'var(--dl-space-space-threeunits)',
-          paddingBottom: 'var(--dl-space-space-twounits)',
-          justifyContent: 'space-between',
-          backgroundColor: '#6890F8',
-        }}
-      >
-        <img
-          alt="WhiteLogo"
-          src="/image/WhiteLogo.png"
-          style={{
-            width: 'var(--dl-size-size-xxlarge)',
-            height: '79px',
-            objectFit: 'cover',
-          }}
-        />
-        <input
-          type="text"
-          placeholder="Search"
-          style={{
-            width: '531px',
-            height: '46px',
-            backgroundColor: '#d9d9d9',
-          }}
-        />
-        <img
-          alt="WhiteBell"
-          src="../image/WhiteBell.png"
-          style={{
-            width: '46px',
-            height: '46px',
-            objectFit: 'cover',
-          }}
-        />
-        <span
-          style={{
-            color: 'rgb(255, 255, 255)',
-            width: 'auto',
-            zIndex: '100',
-            fontSize: '1.7rem',
-            alignSelf: 'center',
-            textAlign: 'center',
-            fontWeight: '900',
-          }}
-        >
-          หมวดหมู่
-        </span>
-        <button
-          style={{
-            color: 'var(--dl-color-gray-black)',
-            width: '199px',
-            height: '64px',
-            position: 'relative',
-            boxShadow: '5px 5px 10px 0px #7c7c7c',
-            textAlign: 'center',
-            textTransform: 'capitalize',
-          }}
-        >
-          <Link href="../login" >
-            <h1
-              style={{
-                top: '0px',
-                left: '0px',
-                color: 'rgb(53, 58, 104)',
-                right: '0px',
-                width: 'auto',
-                bottom: '0px',
-                height: '38px',
-                margin: 'auto',
-                position: 'absolute',
-                textDecoration: 'none',
-              }}
-            >
-              <span
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      {...props}
+    />
+  ))(({ theme }) => ({
+    '& .MuiPaper-root': {
+      borderRadius: 6,
+      marginTop: theme.spacing(1),
+      minWidth: 180,
+      color:
+        theme.palette.mode === 'light' ? 'rgb(55, 65, 81)' : theme.palette.grey[300],
+      boxShadow:
+        'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+      '& .MuiMenu-list': {
+        padding: '4px 0',
+      },
+      '& .MuiMenuItem-root': {
+        '& .MuiSvgIcon-root': {
+          fontSize: 18,
+          color: theme.palette.text.secondary,
+          marginRight: theme.spacing(1.5),
+        },
+        '&:active': {
+          backgroundColor: alpha(
+            theme.palette.primary.main,
+            theme.palette.action.selectedOpacity,
+          ),
+        },
+      },
+    },
+  }));
+
+  const userData = getUserData();
+  
+    return (
+        <AppBar position="static" >
+          <Container maxWidth="xl">
+            <Toolbar disableGutters>
+              <img
+                alt="Logo"                          //LOGO
+                src={logo}
                 style={{
-                  fontWeight: '700',
+                  width: '250px',
+                  height: '65px',
+                  margin: '5px 25px 5px 0px'
+                }}
+              />
+             
+              <Box
+                sx={{
+                  width: '600px',
+                  height: '10%',                //Search
+                  background: '#ffffff',
+                  borderRadius: 3,
+                  margin: '10px 25px 10px 0px'
                 }}
               >
-                Login
-              </span>
-              <br></br>
-            </h1>
-          </Link>
-        </button>
-      </header>
-      <div
-        style={{
-          width: '100%',
-          height: '370px',
-          display: 'flex',
-          position: 'relative',
-          alignItems: 'flex-start',
-          justifyContent: 'flex-start',
-        }}
-      >
-        <div
-          style={{
-            flex: '0 0 auto',
-            width: '138px',
-            border: '2px dashed rgba(120, 120, 120, 0.4)',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-          }}
-        ></div>
-        <div
-          style={{
-            flex: '0 0 auto',
-            width: '138px',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-          }}
-        >
-        </div>
-      </div>
-      <div
-        style={{
-          width: '100%',
-          height: '73px',
-          display: 'flex',
-          position: 'relative',
-          alignItems: 'center',
-          justifyContent: 'center',
-        }}
-      >
-        <div
-          style={{
-            flex: '0 0 auto',
-            width: '138px',
-            border: '2px dashed rgba(120, 120, 120, 0.4)',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-          }}
-        ></div>
-        <label
-          style={{
-            width: 'var(--dl-size-size-maxwidth)',
-            fontSize: '2rem',
-            alignSelf: 'center',
-            boxShadow: 'rgb(124, 124, 124) 5px 5px 10px 0px',
-            fontStyle: 'normal',
-            textAlign: 'center',
-            fontWeight: '900',
-            borderColor: 'var(--dl-color-gray-black)',
-            borderWidth: '1px',
-            backgroundColor: 'rgb(255, 255, 255)',
-          }}
-        >
-          <span>ข่าวสาร</span>
-          <br></br>
-        </label>
-        <div
-          style={{
-            flex: '0 0 auto',
-            width: '136px',
-            border: '2px dashed rgba(120, 120, 120, 0.4)',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-          }}
-        ></div>
-      </div>
-      <div
-        style={{
-          width: '100%',
-          border: '2px dashed rgba(120, 120, 120, 0.4)',
-          height: '33px',
-          display: 'flex',
-          alignItems: 'flex-start',
-        }}
-      ></div>
-      <footer
-        style={{
-          width: '100%',
-          height: '72px',
-          display: 'flex',
-          maxWidth: 'var(--dl-size-size-maxwidth)',
-          alignItems: 'center',
-          paddingTop: 'var(--dl-space-space-twounits)',
-          paddingLeft: 'var(--dl-space-space-threeunits)',
-          paddingRight: 'var(--dl-space-space-threeunits)',
-          paddingBottom: 'var(--dl-space-space-twounits)',
-          justifyContent: 'space-between',
-          backgroundColor: '#6890F8',
-        }}
-      >
-        <div
-          style={{
-            flex: '0 0 auto',
-            width: '200px',
-            border: '2px dashed rgba(120, 120, 120, 0.4)',
-            height: '100px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            flexDirection: 'column',
-          }}
-        ></div>
-        <span>Contact :</span>
-        <img
-          alt="pastedImage"
-          src="/playground_assets/pastedimage-2yqg-200h.png"
-        />
-        <img
-          alt="pastedImage"
-          src="/playground_assets/pastedimage-epx4-200h.png"
-        />
-        <img
-          alt="pastedImage"
-          src="/playground_assets/pastedimage-92fk-200h.png"
-        />
-      </footer>
-    </div>
-  )
-}
+                <TextField fullWidth label="Search" id="Search"/>
+              </Box>
+              
+
+              <NotificationsIcon sx={{
+                  width: '40px',
+                  height: '40px',
+                  margin: '5px 25px 5px 0px',     //Bell
+                  '&:hover': {
+                    opacity: [0.9, 0.8, 0.7]      
+                  }
+                }}/>
+              
+
+              <div>
+                <Button style={{ fontWeight: '900', fontSize: '1.2rem', margin: '5px 25px 5px 0px' }}
+                  id="demo-customized-button"                             //หมวดหมู่
+                  aria-controls={open ? 'demo-customized-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                  variant="contained"
+                  disableElevation
+                  onClick={handleClick}
+                  endIcon={<KeyboardArrowDownIcon />}
+                >
+                  หมวดหมู่
+                </Button>
+                <StyledMenu
+                  id="demo-customized-menu"
+                  MenuListProps={{
+                    'aria-labelledby': 'demo-customized-button',
+                  }}
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>
+                    <ArrowRightIcon />
+                    กิจกรรมมหาวิทยาลัย
+                  </MenuItem>
+                  <Divider sx={{ my: 0.5 }} />
+                  <MenuItem onClick={handleClose} disableRipple>
+                    <ArrowRightIcon />
+                    กิจกรรมจิตอาสา
+                  </MenuItem>
+                </StyledMenu>
+              </div>
+              <ButtonUser/>
+
+          </Toolbar>
+        </Container>
+      </AppBar>
+    );
+  }
 
 export default NavBar
