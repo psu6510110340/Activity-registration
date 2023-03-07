@@ -12,6 +12,7 @@ import Detailpage from './page/Pagehome/Detail'
 import Page from './page/Pageadmin/Checkadmin'
 import Adminhome from './page/Pageadmin/adminhome'
 import Fixdisplay from './components/Body/fixdisplay'
+import Admincheck from './page/Pageadmin/Admincheck'
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path='/checkadmin' element ={<Page/>}/>
         <Route path='/admin' element = {<Adminhome/>}/>
         <Route path='/fixdisplay' element = {<Fixdisplay/>}/>
+        <Route path='/admincheck' element = {<Admincheck/>}/>
       </Routes>
     </BrowserRouter>
   )

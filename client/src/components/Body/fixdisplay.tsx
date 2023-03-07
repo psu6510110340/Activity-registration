@@ -15,6 +15,8 @@ import { userData } from "../../helper";
 import TMD from "../../Models/ModelAdmin";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
+import GroupsIcon from '@mui/icons-material/Groups';
+
 const user = userData();
 
 function Fixdisplay() {
@@ -95,9 +97,15 @@ function Fixdisplay() {
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
-                    onClick={() => handleDeleteClick(tmd.id.toString())}
                   >
                     Delete
+                  </Button>
+                  <Button
+                    variant="outlined"
+                    startIcon={<GroupsIcon />}
+                    onClick={() => navigate("/admincheck")}
+                  >
+                    ดูรายชื่อ
                   </Button>
                 </CardActions>
               </CardContent>
