@@ -97,6 +97,7 @@ function Fixdisplay() {
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
+                    onClick={() => handleDeleteClick(tmd.id.toString())}
                   >
                     Delete
                   </Button>
