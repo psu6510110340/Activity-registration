@@ -6,5 +6,6 @@ export default interface MDAC {
         Username: String;
         ActivityID: String;
         Image: String;
+        createdAt:String;
     }
 }

@@ -31,7 +31,7 @@ function App() {
         <Route path='/checkadmin' element ={<Page/>}/>
         <Route path='/admin' element = {<Adminhome/>}/>
         <Route path='/fixdisplay' element = {<Fixdisplay/>}/>
-        <Route path='/admincheck' element = {<Admincheck/>}/>
+        <Route path='/admincheck/:id' element = {<Admincheck/>}/>
       </Routes>
     </BrowserRouter>
   )

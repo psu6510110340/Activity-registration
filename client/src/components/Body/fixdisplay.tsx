@@ -103,7 +103,7 @@ function Fixdisplay() {
                   <Button
                     variant="outlined"
                     startIcon={<GroupsIcon />}
-                    onClick={() => navigate("/admincheck")}
+                    onClick={() => navigate(`/admincheck/${tmd.id}`)}
                   >
                     ดูรายชื่อ
                   </Button>
