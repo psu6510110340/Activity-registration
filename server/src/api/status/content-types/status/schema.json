@@ -13,10 +13,24 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "status": {
-      "type": "string"
+      "type": "string",
+      "required": true
+    },
+    "Username": {
+      "type": "string",
+      "required": true
+    },
+    "ActivityID": {
+      "type": "string",
+      "required": false
+    },
+    "Image": {
+      "type": "string",
+      "required": true
     }
   }
 }

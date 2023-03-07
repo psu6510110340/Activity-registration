@@ -1,55 +1,79 @@
-import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import Typography from '@mui/material/Typography';
-import ButtonBase from '@mui/material/ButtonBase';
+import * as React from "react";
+import { styled } from "@mui/material/styles";
+import Grid from "@mui/material/Grid";
+import Card from "@mui/material/Card";
+import CardMedia from "@mui/material/CardMedia";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import { useEffect, useState } from "react";
+import MDAC from "../../Models/ModelsActivity";
+import { Box } from "@mui/joy";
 
-const Img = styled('img')({
-  margin: 'auto',
-  display: 'block',
-  maxWidth: '100%',
-  maxHeight: '100%',
-});
+const getUserData = () => {
+  const stringfiedUser = localStorage.getItem("user") || "";
+  if (stringfiedUser) {
+    return JSON.parse(stringfiedUser);
+  }
+  return false;
+};
 
 const CardStatus = () => {
-  return (
-    <Paper
-      sx={{
-        p: 2,
-        margin: 'auto',
-        maxWidth: 750,
-        flexGrow: 1,
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-      }}
-    >
-      <Grid container spacing={2}>
-        <Grid item>
-        </Grid>
-        <Grid item xs={12} sm container>
-          <Grid item xs container direction="column" spacing={2}>
-            <Grid item xs>
-              <Typography gutterBottom variant="subtitle1" component="div">
-                รายการกิจกรรม
-              </Typography>
-              <Typography variant="body2" gutterBottom>
-                กิจกรรม..............
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                กิจกรม..............
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid item>
-            <Typography variant="subtitle1" component="div">
-                Status
-            </Typography>
-          </Grid>
-        </Grid>
-      </Grid>
-    </Paper>
-  );
-}
+  const userData = getUserData();
+  const [activityresult, setActivityResult] = useState<MDAC[]>([]);
 
-export default CardStatus
+  const fetchData = async () => {
+    try {
+      const data = await fetch(
+        `http://localhost:1337/api/statuses?filters[Username]=${userData.username}`
+      );
+      if (data) {
+        const data1 = await data.json();
+        setActivityResult(data1.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <Grid container spacing={3}>
+      {activityresult.map((item, index) => (
+        <Grid item xs={12} sm={6} md={4} key={index}>
+          <Box sx={{ p: 1 }}>
+            <Card sx={{ maxWidth: 345}}>
+              <CardMedia
+                sx={{ height: 150 }}
+                component="img"
+                alt="activity"
+                height="140"
+                image={item.attributes.Image.toString()}
+              />
+              <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                  {item.attributes.title}
+                </Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {/* {item.attributes.Username} */}
+                </Typography>
+                <Typography variant="body2" color="#00FF66">
+                  คุณได้สมัครกิจกรรมนี้แล้ว
+                </Typography>
+              </CardContent>
+              <CardActions>
+                
+              </CardActions>
+            </Card>
+          </Box>
+        </Grid>
+      ))}
+    </Grid>
+  );
+};
+
+export default CardStatus;
