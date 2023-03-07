@@ -94,14 +94,18 @@ function Fixdisplay() {
                   <h3>จำนวนรับ : {tmd.attributes.Number.toString()} คน</h3>
                 </Typography>
                 <CardActions>
-                  <Button
+                  <Button sx={{'&:hover': {
+                    background: 'rgb(253, 44, 44)',color: 'white'
+                    }}}
                     variant="outlined"
                     startIcon={<DeleteIcon />}
                     onClick={() => handleDeleteClick(tmd.id.toString())}
                   >
                     Delete
                   </Button>
-                  <Button
+                  <Button sx={{'&:hover': {
+                    background: '#1976D2',color: 'white'
+                    }}}
                     variant="outlined"
                     startIcon={<GroupsIcon />}
                     onClick={() => navigate(`/admincheck/${tmd.id}`)}

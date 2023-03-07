@@ -6,6 +6,8 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import {Grid} from '@mui/material';
 import NavBaradmin from "../../components/NavBarAdmin";
+import FooterBar from '../../components/FooterBar';
+
 interface IUser {
   username: string;
   email: string;
@@ -156,18 +158,22 @@ const ActivityForm = (): JSX.Element => {
             value={Number}
             onChange={(event) => setNumber(parseInt(event.target.value))}
           />
-          <label>ใส่ไฟล์รูปภาพ</label>
+          <label>เพิ่มไฟล์รูปภาพ</label>
           <input
             type="file"
             accept="image/*"
             style={{ display: "flex" }}
             onChange={(event) => setImage(event.target.files ? event.target.files[0] : null)}
           />
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" variant="contained" color="primary" sx={{margin:'10px 20px 0px auto',
+            '&:hover': {
+            background: 'rgb(18, 187, 41)',color: 'white'
+            }}}>
             Create Activity
           </Button>
         </form>
       </Grid>
+      <FooterBar />
     </Grid>
   );
 }
