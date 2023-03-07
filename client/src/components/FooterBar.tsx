@@ -61,7 +61,7 @@ function FooterBar() {
             </Box>
           </Link>
 
-          <Link href='https://www.instagram.com/takecamp_officail/?fbclid=IwAR3iIizYcqjRp-YTZe4bTENmkEVFsTPejFHS1sV8ZlBbd6xiYYjnkBmbIpc'>
+          <Link href='https://instagram.com/takecamp_official?igshid=YmMyMTA2M2Y='>
             <Box sx={{ margin: '0px 0px 0px 0px' }}>
                 <IconButton sx={{ p: 0 }}>
                   <Avatar alt="Remy Sharp" src={ instagram } //Instagram
