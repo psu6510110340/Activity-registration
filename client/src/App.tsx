@@ -25,7 +25,6 @@ function App() {
         <Route path="/logout" element={<Logout />} />
         <Route path="/UserDataDisplay" element={<UseData />} />
         <Route path="/Status" element={<Status />} />
-        <Route path="/Profile" element={<Profile />} />
         <Route path='/adminForm' element ={<ActivityForm/>}/>
         <Route path='/checkadmin' element ={<Page/>}/>
         <Route path='/admin' element = {<Adminhome/>}/>
