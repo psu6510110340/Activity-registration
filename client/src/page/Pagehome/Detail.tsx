@@ -14,6 +14,8 @@ import ReactMarkdown from "react-markdown";
 import CardContent from "@mui/material/CardContent";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import MDAC from "../../Models/ModelsActivity";
+import { truncate } from "fs";
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem("user") || "";
@@ -24,81 +26,132 @@ const getUserData = () => {
 };
 const Detailpage = () => {
   const [userresult, setUserResult] = useState<MDT[]>([]);
-  const [quantity, setQuantity] = useState(1);
+  const [activityresult, setActivityResult] = useState<MDAC[]>([]);
+  // const [quantity, setQuantity] = useState(1);
   const navigate = useNavigate();
   const params = useParams();
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const [isRegis, setIsRegis] = useState(false)
+  const userData = getUserData();
+  
 
   const fetchData = async () => {
     try {
-      const res = await Repo.userResult.get(params.id as string);
-      if (res) {
-        setUserResult(res);
+
+      const data1 = await Repo.userResult.get(params.id as string);
+      const data2 = await fetch(`http://localhost:1337/api/statuses?filters[Username]=${userData.username}&filters[ActivityID]=${params.id}`)
+      if (data1) {
+        setUserResult(data1);
       }
+      if (data2) {
+        const data3 = await data2.json();
+        setActivityResult(data3.data);
+      }
+      
     } catch (error) {
       console.log(error);
     }
   };
-  async function handleSignupClick(id: string) {
-    if (data?.likeCount!=data?.Number){
-    const userData = getUserData();
-    if (userData) {
-    const result = await Swal.fire({
-      title: 'คุณมั่นใจ?',
-      text: "คุณต้องการจะสมัครกิจกรรมนี้หรือไม่",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'ยืนยัน',
-      cancelButtonText: 'ยกเลิก'
-    })
-  
-    if (result.isConfirmed) {
-      try {
-        const resp = await fetch(`http://localhost:1337/api/activity/${id}/like`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${userData.jwt}`
-          }
-        });
-        const data = await resp.json();
-        console.log(data);
-        fetchData();
-        Swal.fire({
-          title: "สำเร็จ",
-          text: "สมัครกิจกรรมสำเร็จแล้ว",
-          icon: "success",
-          confirmButtonText: "OK",
-        });
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  } else {
-    Swal.fire({
-      title: "คุณไม่มีสิทธิ์เข้าถึง",
-      text: "กรุณาล็อคอิน",
-      icon: "error",
-      confirmButtonText: "OK",
-    }).then(() => {
-      navigate("/login");
-    });
-  }
-  } else {
-    Swal.fire({
-      title: "เต็ม",
-      text: "ขณะนี้มีผู้ลงทะเบียนกิจกรรมเต็มแล้ว",
-      icon: "warning",
-      confirmButtonText: "OK",
-    });
 
+  const handleDisabled = () => {
+    if (activityresult.length > 0) {
+      setIsRegis(true)
+    }
   }
-}
+
+
+  async function handleSignupClick(id: string) {
+    const activity = {
+      data: {
+        title: data?.title.toString(),
+        status: "สมัครแล้ว",
+        Username: userData.username,
+        ActivityID: params.id,
+        Image: `http://localhost:1337${data?.image.data.attributes.url}`
+      },
+    };
+
+    const requestBody = JSON.stringify(activity);
+    if (data?.likeCount != data?.Number) {
+      if (userData) {
+        const result = await Swal.fire({
+          title: "คุณมั่นใจ?",
+          text: "คุณต้องการจะสมัครกิจกรรมนี้หรือไม่",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "ยืนยัน",
+          cancelButtonText: "ยกเลิก",
+        });
+
+        if (result.isConfirmed) {
+          try {
+            const resp = await fetch(
+              `http://localhost:1337/api/activity/${id}/like`,
+              {
+                method: "GET",
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${userData.jwt}`,
+                },
+              }
+            );
+            const data = await resp.json();
+            console.log(data);
+            const response = await fetch(
+              "http://localhost:1337/api/statuses",
+              {
+                method: "POST",
+                headers: {
+                  Authorization: `Bearer ${userData.jwt}`,
+                  "Content-Type": "application/json",
+                },
+                body: requestBody,
+              }
+            );
+
+            const data1 = await response.json();
+            console.log(data1);
+            fetchData();
+            Swal.fire({
+              title: "สำเร็จ",
+              text: "สมัครกิจกรรมสำเร็จแล้ว",
+              icon: "success",
+              confirmButtonText: "OK",
+            });
+            setIsRegis(true);
+          } catch (err) {
+            console.error(err);
+          }
+        }
+      } else {
+        Swal.fire({
+          title: "คุณไม่มีสิทธิ์เข้าถึง",
+          text: "กรุณาล็อคอิน",
+          icon: "error",
+          confirmButtonText: "OK",
+        }).then(() => {
+          navigate("/login");
+        });
+      }
+    } else {
+      Swal.fire({
+        title: "เต็ม",
+        text: "ขณะนี้มีผู้ลงทะเบียนกิจกรรมเต็มแล้ว",
+        icon: "warning",
+        confirmButtonText: "OK",
+      });
+    }
+  }
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, [params.id]);
+
+  useEffect(() => {
+    handleDisabled()
+  })
+  
 
   const data = userresult.length > 0 ? userresult[0].attributes : null;
   const image = `http://localhost:1337${data?.image.data.attributes.url}`;
@@ -232,9 +285,17 @@ const Detailpage = () => {
                       opacity: [0.9, 0.8, 0.7],
                     },
                   }}
-                  onClick={() => params.id && handleSignupClick(params.id.toString())}
+                  onClick={() =>
+                    params.id && handleSignupClick(params.id.toString())
+                  }
+                  disabled = {isRegis}
                 >
-                  สมัคร
+                  {!isRegis &&
+                    <Typography>สมัคร</Typography>
+                  }
+                  {isRegis &&
+                    <Typography>สมัครแล้ว</Typography>
+                  }
                 </Button>
               </CardContent>
               <Col></Col>
