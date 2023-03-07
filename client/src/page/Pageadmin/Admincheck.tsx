@@ -49,7 +49,7 @@ const Admincheck = () => {
             <Card key={index}>
               <CardContent>
                 <h2 className='user'>ผู้สมัคร : {item.attributes.Username}</h2>
-                <p className='time'>เวลาลงทะเบียน: {item.attributes.createdAt}</p>
+                <p className='time'>เวลาลงทะเบียน: {item.attributes.createdAt.toString().slice(0,10)} Time: {item.attributes.createdAt.toString().slice(11,16)}</p>
               </CardContent>
             </Card>
           ))}
