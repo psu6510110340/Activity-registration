@@ -93,40 +93,15 @@ function NavBar () {
              
               <Box
                 sx={{
-                  width: '600px',
+                  width: '800px',
                   height: '10%',                //Search
                   background: '#ffffff',
                   borderRadius: 3,
                   margin: '10px 25px 10px 0px'
                 }}
               >
-                <TextField fullWidth label="Search" id="Search"/>
               </Box>
-              
-
-              <NotificationsIcon sx={{
-                  width: '40px',
-                  height: '40px',
-                  margin: '5px 25px 5px 0px',     //Bell
-                  '&:hover': {
-                    opacity: [0.9, 0.8, 0.7]      
-                  }
-                }}/>
-              
-
               <div>
-                <Button style={{ fontWeight: '900', fontSize: '1.2rem', margin: '5px 25px 5px 0px' }}
-                  id="demo-customized-button"                             //หมวดหมู่
-                  aria-controls={open ? 'demo-customized-menu' : undefined}
-                  aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
-                  variant="contained"
-                  disableElevation
-                  onClick={handleClick}
-                  endIcon={<KeyboardArrowDownIcon />}
-                >
-                  หมวดหมู่
-                </Button>
                 <StyledMenu
                   id="demo-customized-menu"
                   MenuListProps={{

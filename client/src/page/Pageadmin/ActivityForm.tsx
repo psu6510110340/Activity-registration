@@ -173,7 +173,6 @@ const ActivityForm = (): JSX.Element => {
           </Button>
         </form>
       </Grid>
-      <FooterBar />
     </Grid>
   );
 }
