@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 import { useEffect, useState } from "react";
 import MDAC from "../../Models/ModelsActivity";
 import { Box } from "@mui/joy";
+import conf from "../../conf";
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem("user") || "";
@@ -26,7 +27,7 @@ const CardStatus = () => {
   const fetchData = async () => {
     try {
       const data = await fetch(
-        `http://localhost:1337/api/statuses?filters[Username]=${userData.username}`
+        `${conf.apiPrefix}/api/statuses?filters[Username]=${userData.username}`
       );
       if (data) {
         const data1 = await data.json();

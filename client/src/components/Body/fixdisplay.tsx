@@ -16,6 +16,7 @@ import TMD from "../../Models/ModelAdmin";
 import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2'
 import GroupsIcon from '@mui/icons-material/Groups';
+import conf from "../../conf";
 
 const user = userData();
 
@@ -46,7 +47,7 @@ function Fixdisplay() {
   
     if (result.isConfirmed) {
       try {
-        const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
+        const resp = await fetch(`${conf.apiPrefix}/api/activities/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +75,7 @@ function Fixdisplay() {
             <Card sx={{ maxWidth: 500, width: "100%", height: "" }}>
               <CardMedia
                 sx={{ height: 150 }}
-                image={`http://localhost:1337${tmd.attributes.image.data.attributes.url}`}
+                image={`${conf.apiPrefix}${tmd.attributes.image.data.attributes.url}`}
               />
               <CardContent>
                 <Typography gutterBottom component="div">

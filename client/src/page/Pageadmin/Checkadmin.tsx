@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import conf from '../../conf';
 
 interface User {
   id: number;
@@ -22,7 +23,7 @@ const getUserData = () => {
 const checkUserRole = async (token: string): Promise<boolean> => {
   const userData = getUserData();
   try {
-    const { data } = await axios.get<User>("http://localhost:1337/api/users/me?populate=role", {
+    const { data } = await axios.get<User>(`${conf.apiPrefix}/api/users/me?populate=role`, {
         
       headers: { Authorization: `Bearer ${token}` },
     });

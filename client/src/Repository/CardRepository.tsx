@@ -3,12 +3,13 @@ import MDT from "../Models/ModelTour";
 import id from "../Models/ModelTour";
 import { IRepository } from "./IRepository";
 import { userData } from "../helper";
+import conf from "../conf";
 
 const user = userData()
 
 
 export class CampRepository implements IRepository <MDT> {
-    urlPrefix = "http://localhost:1337/api/activities?populate=*"
+    urlPrefix = `${conf.apiPrefix}/api/activities?populate=*`
     token = user.jwt
 
     async getAll(): Promise<MDT[] | null> {
@@ -23,7 +24,7 @@ export class CampRepository implements IRepository <MDT> {
 
     }
     async delete(id: string): Promise<MDT[] | null>{
-        const resp = await fetch(`http://localhost:1337/api/activities/${id}`, {
+        const resp = await fetch(`${conf.apiPrefix}/api/activities/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",

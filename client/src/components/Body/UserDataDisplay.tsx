@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
 import { Height } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
+import conf from "../../conf";
 
 function UseData() {
   const [MDT, setMDT] = useState<MDT[]>([]);
@@ -38,7 +39,7 @@ function UseData() {
             <Card sx={{ maxWidth: 500, width: "100%", height: "" }}>
               <CardMedia
                 sx={{ height: 150 }}
-                image={`http://localhost:1337${mdt.attributes.image.data.attributes.url}`}
+                image={`${conf.apiPrefix}${mdt.attributes.image.data.attributes.url}`}
               />
               <CardContent>
                 <Typography gutterBottom component="div">

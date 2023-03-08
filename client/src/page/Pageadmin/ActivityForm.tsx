@@ -7,6 +7,7 @@ import withReactContent from 'sweetalert2-react-content'
 import {Grid} from '@mui/material';
 import NavBaradmin from "../../components/NavBarAdmin";
 import FooterBar from '../../components/FooterBar';
+import conf from "../../conf";
 
 interface IUser {
   username: string;
@@ -65,7 +66,7 @@ const ActivityForm = (): JSX.Element => {
   }));
 
   try {
-    const response = await fetch("http://localhost:1337/api/activities", {
+    const response = await fetch(`${conf.apiPrefix}/api/activities`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${user.jwt}`,

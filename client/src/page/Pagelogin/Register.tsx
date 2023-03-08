@@ -12,6 +12,7 @@ import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom';
 import logo from '../../image/logo.png';
 import backgroundImage from '../../image/PSU.jpg';
+import conf from '../../conf';
 
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
@@ -21,7 +22,7 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="http://localhost:3000/">
+      <Link color="inherit" href="/">
         Take Camp
       </Link>{' '}
       {new Date().getFullYear()}
@@ -73,7 +74,7 @@ export default function RegisterPage() {
           return;
         }
         
-        const url = "http://localhost:1337/api/auth/local/register";
+        const url = `${conf.apiPrefix}/api/auth/local/register`;
         try {
           if (user.email && user.password && user.username) {
             const res = await axios.post(url, user)

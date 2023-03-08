@@ -17,6 +17,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import UseData from '../../components/Body/UserDataDisplay';
+import conf from '../../conf';
 
 const images = [firstImage, secondImage, thirdImage, fourthImage, fifthImage, sixthImage, seventhImage, eighthImage, ninethImage];
 

@@ -17,13 +17,14 @@ import logo from '../../image/logo.png';
 import backgroundImage from '../../image/PSU.jpg';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content';
+import conf from '../../conf';
 
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="http://localhost:3000/">
+      <Link color="inherit" href="/">
         Take Camp
       </Link>{' '}
       {new Date().getFullYear()}
@@ -51,7 +52,7 @@ export default function SignInSide() {
     
       // If the identifier is a valid email, proceed with login
       if (isValidEmail && user.password ) {
-        const url = "http://localhost:1337/api/auth/local"
+        const url = `${conf.apiPrefix}/api/auth/local`
         try {
           const { data } = await axios.post(url, user)
           console.log(data)

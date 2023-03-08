@@ -16,6 +16,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import MDAC from "../../Models/ModelsActivity";
 import { truncate } from "fs";
+import conf from "../../conf";
 
 const getUserData = () => {
   const stringfiedUser = localStorage.getItem("user") || "";
@@ -39,7 +40,7 @@ const Detailpage = () => {
     try {
 
       const data1 = await Repo.userResult.get(params.id as string);
-      const data2 = await fetch(`http://localhost:1337/api/statuses?filters[Username]=${userData.username}&filters[ActivityID]=${params.id}`)
+      const data2 = await fetch(`${conf.apiPrefix}/api/statuses?filters[Username]=${userData.username}&filters[ActivityID]=${params.id}`)
       if (data1) {
         setUserResult(data1);
       }
@@ -67,7 +68,7 @@ const Detailpage = () => {
         status: "สมัครแล้ว",
         Username: userData.username,
         ActivityID: params.id,
-        Image: `http://localhost:1337${data?.image.data.attributes.url}`
+        Image: `${conf.apiPrefix}${data?.image.data.attributes.url}`
       },
     };
 
@@ -88,7 +89,7 @@ const Detailpage = () => {
         if (result.isConfirmed) {
           try {
             const resp = await fetch(
-              `http://localhost:1337/api/activity/${id}/like`,
+              `${conf.apiPrefix}/api/activity/${id}/like`,
               {
                 method: "GET",
                 headers: {
@@ -100,7 +101,7 @@ const Detailpage = () => {
             const data = await resp.json();
             console.log(data);
             const response = await fetch(
-              "http://localhost:1337/api/statuses",
+              `${conf.apiPrefix}/api/statuses`,
               {
                 method: "POST",
                 headers: {
@@ -154,7 +155,7 @@ const Detailpage = () => {
   
 
   const data = userresult.length > 0 ? userresult[0].attributes : null;
-  const image = `http://localhost:1337${data?.image.data.attributes.url}`;
+  const image = `${conf.apiPrefix}${data?.image.data.attributes.url}`;
 
   return (
     <div>

@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent';
 import axios from 'axios';
 import NavBaradmin from '../../components/NavBarAdmin';
 import "./Admincheck.css"
+import conf from '../../conf';
 
 const Admincheck = () => {
   const [registrants, setRegistrants] = useState([]);
@@ -19,7 +20,7 @@ const Admincheck = () => {
   const fetchData = async () => {
     try {
       const data = await fetch(
-        `http://localhost:1337/api/statuses?filters[ActivityID]=${id}`
+        `${conf.apiPrefix}/api/statuses?filters[ActivityID]=${id}`
       );
       if (data) {
         const data1 = await data.json();
