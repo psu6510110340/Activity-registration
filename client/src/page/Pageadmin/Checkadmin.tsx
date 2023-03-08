@@ -31,6 +31,8 @@ const checkUserRole = async (token: string): Promise<boolean> => {
     if (data.role.name === 'Admin') {
       window.location.href = '/admin';
       return true;
+    }else{
+      window.location.href = '/Home';
     }
   } catch (error) {
     console.log(error);
