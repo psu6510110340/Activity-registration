@@ -14,7 +14,6 @@ const Main: React.FC = () => {
         <video src={videoBg} autoPlay loop muted />
         <div className="content">
             <h1>TAKE CAMP🌍</h1>
-            
             <a className= "myButton" href='http://localhost:3000/Home'>COMMING TO TAKECAMP</a>
         </div>
     </div>
